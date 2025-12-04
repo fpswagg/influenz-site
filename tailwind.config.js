@@ -8,14 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'dark-bg': '#0A0A0F',
-        'dark-surface': '#141419',
-        'dark-border': '#1F1F24',
+        // Light theme colors
+        'light-bg': '#FFFFFF',
+        'light-surface': '#F8F9FA',
+        'light-border': '#E5E7EB',
         'violet-subtle': '#8B5CF6',
         'violet-muted': '#6D28D9',
-        'text-primary': '#F5F5F7',
-        'text-secondary': '#9CA3AF',
-        'text-muted': '#6B7280',
+        'text-primary': '#1F2937',
+        'text-secondary': '#4B5563',
+        'text-muted': '#9CA3AF',
       },
       fontFamily: {
         'heading': ['Inter', 'sans-serif'],
@@ -39,8 +40,8 @@ module.exports = {
           secondary: '#3A0D4A',
           accent: '#C79BFF',
           neutral: '#1A0C20',
-          'base-100': '#F8F6FB',
-          'base-200': '#D6D2E3',
+          'base-100': '#FFFFFF',
+          'base-200': '#F8F9FA',
         },
       },
     ],

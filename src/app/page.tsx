@@ -27,7 +27,7 @@ export default function Home() {
       
       <About />
       
-      <section id="contact" className="min-h-screen py-32 px-6 lg:px-24">
+      <section id="contact" className="min-h-screen py-32 px-6 lg:px-24 bg-white">
         <div className="max-w-content mx-auto">
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-6">
@@ -39,7 +39,7 @@ export default function Home() {
                 Contact
               </span>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-text-primary">
               {t.contact.title}
             </h2>
             <p className="text-xl text-text-secondary max-w-2xl">
@@ -49,7 +49,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="max-w-2xl">
+          <div className="max-w-2xl bg-light-surface/50 p-8 lg:p-12 rounded-2xl border border-light-border">
             <ContactForm />
           </div>
         </div>

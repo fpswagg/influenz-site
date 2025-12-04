@@ -20,7 +20,7 @@ export default function ProjetsPage() {
     : projectsData.filter(project => getProjectCategory(project) === activeFilter)
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-white">
       <Header />
       
       <div className="px-6 py-24 lg:px-24 lg:py-32">
@@ -34,7 +34,7 @@ export default function ProjetsPage() {
           >
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-text-secondary hover:text-violet-subtle transition-colors mb-8"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -42,7 +42,7 @@ export default function ProjetsPage() {
               {t.projectsPage.back}
             </Link>
             
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-text-primary">
               {t.projectsPage.title}
             </h1>
             <p className="text-xl text-text-secondary max-w-2xl">
@@ -63,8 +63,8 @@ export default function ProjetsPage() {
                 onClick={() => setActiveFilter(category.id)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   activeFilter === category.id
-                    ? 'bg-violet-subtle text-white'
-                    : 'border border-dark-border text-text-secondary hover:text-text-primary hover:border-violet-subtle/50'
+                    ? 'bg-violet-subtle text-white shadow-lg shadow-violet-subtle/25'
+                    : 'border border-light-border text-text-secondary hover:text-text-primary hover:border-violet-subtle/50 bg-white'
                 }`}
               >
                 {category[language]}
@@ -94,10 +94,10 @@ export default function ProjetsPage() {
                     href={`/projets/${project.slug}`}
                     className="group block"
                   >
-                    <div className="border border-dark-border rounded-2xl overflow-hidden hover:border-violet-subtle/50 transition-colors bg-dark-surface/50">
+                    <div className="border border-light-border rounded-2xl overflow-hidden hover:border-violet-subtle/50 transition-colors bg-white shadow-sm hover:shadow-lg hover:shadow-violet-subtle/10">
                       {/* Image */}
-                      <div className="aspect-video bg-dark-surface flex items-center justify-center border-b border-dark-border">
-                        <div className="text-6xl font-bold text-violet-subtle/20">
+                      <div className="aspect-video bg-light-surface flex items-center justify-center border-b border-light-border">
+                        <div className="text-6xl font-bold text-violet-subtle/30">
                           {getCategoryTranslation(project.categoryId, language).charAt(0)}
                         </div>
                       </div>
@@ -108,7 +108,7 @@ export default function ProjetsPage() {
                           {getCategoryTranslation(project.categoryId, language)} • {project.year}
                         </div>
                         
-                        <h2 className="text-2xl font-bold mb-3 group-hover:text-violet-subtle transition-colors">
+                        <h2 className="text-2xl font-bold mb-3 text-text-primary group-hover:text-violet-subtle transition-colors">
                           {translation.title}
                         </h2>
                         
@@ -121,7 +121,7 @@ export default function ProjetsPage() {
                           {getProjectServices(project, language).slice(0, 3).map((service, idx) => (
                             <span
                               key={idx}
-                              className="px-3 py-1 bg-dark-bg border border-dark-border rounded-full text-xs text-text-muted"
+                              className="px-3 py-1 bg-light-surface border border-light-border rounded-full text-xs text-text-muted"
                             >
                               {service}
                             </span>

@@ -11,7 +11,7 @@ export default function Projets() {
   const t = translations[language]
 
   return (
-    <section id="projects" className="min-h-screen py-32 px-6 lg:px-24">
+    <section id="projects" className="min-h-screen py-32 px-6 lg:px-24 bg-white">
       <div className="max-w-content mx-auto">
         {/* Header */}
         <div className="mb-20">
@@ -24,7 +24,7 @@ export default function Projets() {
               {language === 'fr' ? 'Portfolio' : 'Portfolio'}
             </span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-text-primary">
             {t.projects.title}
           </h2>
           <p className="text-xl text-text-secondary max-w-2xl">
@@ -45,7 +45,7 @@ export default function Projets() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center p-8 lg:p-12 border border-dark-border rounded-2xl hover:border-violet-subtle/30 transition-colors bg-dark-surface/30">
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center p-8 lg:p-12 border border-light-border rounded-2xl hover:border-violet-subtle/30 transition-colors bg-light-surface/50 hover:shadow-lg hover:shadow-violet-subtle/5">
                   {/* Number */}
                   <div className="lg:col-span-1">
                     <span className="text-5xl font-bold text-text-muted group-hover:text-violet-subtle transition-colors">
@@ -60,7 +60,7 @@ export default function Projets() {
                         {getCategoryTranslation(project.categoryId, language)}
                       </span>
                     </div>
-                    <h3 className="text-2xl lg:text-3xl font-bold group-hover:text-violet-subtle transition-colors">
+                    <h3 className="text-2xl lg:text-3xl font-bold text-text-primary group-hover:text-violet-subtle transition-colors">
                       {translation.title}
                     </h3>
                     <p className="text-lg text-text-secondary leading-relaxed">
@@ -72,7 +72,7 @@ export default function Projets() {
                   <div className="lg:col-span-4 flex lg:justify-end">
                     <Link
                       href={`/projets/${project.slug}?redirect=/#projects`}
-                      className="inline-flex items-center gap-3 px-6 py-3 bg-dark-surface border border-dark-border rounded-lg text-text-primary hover:text-violet-subtle hover:border-violet-subtle transition-all group/btn"
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-white border border-light-border rounded-lg text-text-primary hover:text-violet-subtle hover:border-violet-subtle transition-all group/btn shadow-sm"
                     >
                       <span className="font-medium">{t.projects.cta}</span>
                       <svg className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,7 +96,7 @@ export default function Projets() {
         >
           <Link
             href="/projets"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-dark-border rounded-lg hover:border-violet-subtle/50 text-text-primary hover:text-violet-subtle transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-light-border rounded-lg hover:border-violet-subtle/50 text-text-primary hover:text-violet-subtle transition-colors shadow-sm"
           >
             <span className="font-medium">
               {language === 'fr' ? 'Voir tous les projets' : 'View all projects'}

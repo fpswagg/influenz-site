@@ -4,6 +4,7 @@ import { env } from '@/lib/config/env'
 
 export interface ContactFormData {
   name: string
+  enterprise?: string
   email: string
   message: string
 }

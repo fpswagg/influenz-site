@@ -114,7 +114,7 @@ export default function SideNav({ isVisible }: SideNavProps) {
         className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block"
         style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
       >
-        <nav className="flex flex-col gap-2 bg-dark-surface/95 backdrop-blur-sm border border-dark-border rounded-2xl p-3 shadow-xl">
+        <nav className="flex flex-col gap-2 bg-white/95 backdrop-blur-sm border border-light-border rounded-2xl p-3 shadow-lg">
           {sections.map((section) => {
             const isActive = activeSection === section.id
             return (
@@ -124,7 +124,7 @@ export default function SideNav({ isVisible }: SideNavProps) {
                 className={`group flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 ${
                   isActive 
                     ? 'bg-violet-subtle/10 border border-violet-subtle/30' 
-                    : 'border border-transparent hover:bg-dark-bg/50'
+                    : 'border border-transparent hover:bg-light-surface'
                 }`}
               >
                 {/* Number */}
@@ -140,7 +140,7 @@ export default function SideNav({ isVisible }: SideNavProps) {
                 <div className={`w-px h-8 transition-all duration-200 ${
                   isActive 
                     ? 'bg-violet-subtle shadow-sm shadow-violet-subtle/50' 
-                    : 'bg-dark-border group-hover:bg-dark-border'
+                    : 'bg-light-border group-hover:bg-light-border'
                 }`} />
                 
                 {/* Label */}
@@ -158,7 +158,7 @@ export default function SideNav({ isVisible }: SideNavProps) {
       </motion.div>
 
       {/* Mobile Bottom Nav - toujours visible, design simplifié */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-dark-surface/95 backdrop-blur-md border-t border-dark-border shadow-2xl">
+      <nav className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-light-border shadow-lg">
         <div className="flex">
           {sections.map((section) => {
             const isActive = activeSection === section.id

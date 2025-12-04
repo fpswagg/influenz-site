@@ -9,12 +9,12 @@ export default function SimpleFooter() {
   const t = translations[language]
 
   return (
-    <footer className="py-12 px-4 lg:px-24 border-t border-dark-border">
+    <footer className="py-12 px-4 lg:px-24 border-t border-light-border bg-light-surface/50">
       <div className="max-w-content mx-auto">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">iNFLUENZ</h3>
+            <h3 className="text-2xl font-bold mb-4 text-text-primary">iNFLUENZ</h3>
             <p className="text-text-secondary">
               {t.footer.tagline}
             </p>
@@ -22,7 +22,7 @@ export default function SimpleFooter() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold mb-4">{t.footer.contact}</h4>
+            <h4 className="font-bold mb-4 text-text-primary">{t.footer.contact}</h4>
             <div className="space-y-2 text-text-secondary">
               <a 
                 href={`mailto:${env.contact.email}`}
@@ -49,7 +49,7 @@ export default function SimpleFooter() {
 
           {/* Social */}
           <div>
-            <h4 className="font-bold mb-4">{t.footer.follow}</h4>
+            <h4 className="font-bold mb-4 text-text-primary">{t.footer.follow}</h4>
             <div className="space-y-2">
               {env.social.linkedin && (
                 <a 
@@ -85,7 +85,7 @@ export default function SimpleFooter() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-dark-border text-center text-text-muted text-sm">
+        <div className="pt-8 border-t border-light-border text-center text-text-muted text-sm">
           <p>&copy; {new Date().getFullYear()} INFLUENZ. {t.footer.rights}</p>
         </div>
       </div>

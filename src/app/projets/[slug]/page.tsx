@@ -19,9 +19,9 @@ export default function ProjectDetailPage() {
 
   if (!project) {
     return (
-      <main className="min-h-screen flex items-center justify-center">
+      <main className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">{t.project.notFound}</h1>
+          <h1 className="text-4xl font-bold mb-4 text-text-primary">{t.project.notFound}</h1>
           <Link href="/projets" className="text-violet-subtle hover:underline">
             {t.project.backToProjects}
           </Link>
@@ -33,7 +33,7 @@ export default function ProjectDetailPage() {
   const translation = getProjectTranslation(project, language)
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-white">
       <Header />
       
       <div className="px-6 py-24 lg:px-24 lg:py-32">
@@ -47,7 +47,7 @@ export default function ProjectDetailPage() {
           >
             <Link
               href={redirect || '/projets'}
-              className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors"
+              className="inline-flex items-center gap-2 text-text-secondary hover:text-violet-subtle transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -66,7 +66,7 @@ export default function ProjectDetailPage() {
             <div className="text-sm uppercase tracking-wider text-text-muted mb-4">
               {getCategoryTranslation(project.categoryId, language)} • {project.year}
             </div>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-text-primary">
               {translation.title}
             </h1>
             <p className="text-xl text-text-secondary leading-relaxed">
@@ -79,9 +79,9 @@ export default function ProjectDetailPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="aspect-video bg-dark-surface rounded-2xl border border-dark-border flex items-center justify-center mb-16"
+            className="aspect-video bg-light-surface rounded-2xl border border-light-border flex items-center justify-center mb-16 shadow-sm"
           >
-            <div className="text-8xl font-bold text-violet-subtle/20">
+            <div className="text-8xl font-bold text-violet-subtle/30">
               {getCategoryTranslation(project.categoryId, language).charAt(0)}
             </div>
           </motion.div>
@@ -92,30 +92,30 @@ export default function ProjectDetailPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.3 }}
-              className="p-6 border border-dark-border rounded-xl bg-dark-surface/50"
+              className="p-6 border border-light-border rounded-xl bg-light-surface/50 shadow-sm"
             >
               <div className="text-sm text-text-muted mb-2">{t.project.client}</div>
-              <div className="font-medium">{translation.client}</div>
+              <div className="font-medium text-text-primary">{translation.client}</div>
             </motion.div>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.35 }}
-              className="p-6 border border-dark-border rounded-xl bg-dark-surface/50"
+              className="p-6 border border-light-border rounded-xl bg-light-surface/50 shadow-sm"
             >
               <div className="text-sm text-text-muted mb-2">{t.project.year}</div>
-              <div className="font-medium">{project.year}</div>
+              <div className="font-medium text-text-primary">{project.year}</div>
             </motion.div>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.4 }}
-              className="p-6 border border-dark-border rounded-xl bg-dark-surface/50"
+              className="p-6 border border-light-border rounded-xl bg-light-surface/50 shadow-sm"
             >
               <div className="text-sm text-text-muted mb-2">{t.project.category}</div>
-              <div className="font-medium">{getCategoryTranslation(project.categoryId, language)}</div>
+              <div className="font-medium text-text-primary">{getCategoryTranslation(project.categoryId, language)}</div>
             </motion.div>
           </div>
 
@@ -126,7 +126,7 @@ export default function ProjectDetailPage() {
             transition={{ duration: 0.4, delay: 0.45 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-6">{t.project.challenge}</h2>
+            <h2 className="text-2xl font-bold mb-6 text-text-primary">{t.project.challenge}</h2>
             <p className="text-lg text-text-secondary leading-relaxed">
               {translation.challenge}
             </p>
@@ -139,7 +139,7 @@ export default function ProjectDetailPage() {
             transition={{ duration: 0.4, delay: 0.5 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-6">{t.project.solution}</h2>
+            <h2 className="text-2xl font-bold mb-6 text-text-primary">{t.project.solution}</h2>
             <p className="text-lg text-text-secondary leading-relaxed">
               {translation.solution}
             </p>
@@ -152,12 +152,12 @@ export default function ProjectDetailPage() {
             transition={{ duration: 0.4, delay: 0.55 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-6">{t.project.services}</h2>
+            <h2 className="text-2xl font-bold mb-6 text-text-primary">{t.project.services}</h2>
             <div className="flex flex-wrap gap-3">
               {getProjectServices(project, language).map((service, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-dark-surface border border-dark-border rounded-lg text-text-secondary"
+                  className="px-4 py-2 bg-light-surface border border-light-border rounded-lg text-text-secondary"
                 >
                   {service}
                 </span>
@@ -172,14 +172,14 @@ export default function ProjectDetailPage() {
             transition={{ duration: 0.4, delay: 0.6 }}
             className="p-8 border border-violet-subtle/30 rounded-2xl bg-violet-subtle/5"
           >
-            <h2 className="text-2xl font-bold mb-6">{t.project.results}</h2>
+            <h2 className="text-2xl font-bold mb-6 text-text-primary">{t.project.results}</h2>
             <ul className="space-y-4">
               {translation.results.map((result, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <svg className="w-6 h-6 text-violet-subtle flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-lg">{result}</span>
+                  <span className="text-lg text-text-secondary">{result}</span>
                 </li>
               ))}
             </ul>
@@ -197,7 +197,7 @@ export default function ProjectDetailPage() {
             </p>
             <Link
               href="/#contact"
-              className="inline-block px-8 py-4 bg-violet-subtle text-white font-medium rounded-lg hover:bg-violet-muted transition-colors"
+              className="inline-block px-8 py-4 bg-violet-subtle text-white font-medium rounded-lg hover:bg-violet-muted transition-colors shadow-lg shadow-violet-subtle/25 hover:shadow-xl hover:shadow-violet-subtle/30"
             >
               {t.project.contactUs}
             </Link>

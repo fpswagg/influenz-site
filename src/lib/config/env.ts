@@ -5,7 +5,7 @@
 export const env = {
   // Contact Information (accessible côté client)
   contact: {
-    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'contact@influenz.cm',
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'info@influenz.cm',
     phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || process.env.CONTACT_PHONE || '+237 XX XX XX XX',
     address: process.env.NEXT_PUBLIC_CONTACT_ADDRESS || process.env.CONTACT_ADDRESS || 'Yaoundé, Cameroun',
   },
@@ -19,7 +19,7 @@ export const env = {
 
   // Contact Form Configuration (serveur uniquement)
   contactForm: {
-    recipientEmail: process.env.CONTACT_FORM_RECIPIENT_EMAIL || 'contact@influenz.cm',
+    recipientEmail: process.env.CONTACT_FORM_RECIPIENT_EMAIL || 'info@influenz.cm',
     emailService: process.env.EMAIL_SERVICE || 'smtp',
   },
 

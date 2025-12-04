@@ -62,6 +62,8 @@ export interface Translations {
   contact: {
     title: string
     name: string
+    enterprise: string
+    enterpriseOptional: string
     email: string
     message: string
     send: string
@@ -70,6 +72,7 @@ export interface Translations {
     error: string
     placeholders: {
       name: string
+      enterprise: string
       email: string
       message: string
     }
@@ -174,6 +177,8 @@ export const translations: Record<Language, Translations> = {
     contact: {
       title: 'Contactez-nous',
       name: 'Nom',
+      enterprise: 'Entreprise',
+      enterpriseOptional: '(optionnel)',
       email: 'Email',
       message: 'Message',
       send: 'Envoyer',
@@ -182,6 +187,7 @@ export const translations: Record<Language, Translations> = {
       error: 'Une erreur est survenue. Veuillez réessayer.',
       placeholders: {
         name: 'Votre nom',
+        enterprise: 'Nom de votre entreprise',
         email: 'votre@email.com',
         message: 'Parlez-nous de votre projet...',
       },
@@ -292,6 +298,8 @@ export const translations: Record<Language, Translations> = {
     contact: {
       title: 'Contact us',
       name: 'Name',
+      enterprise: 'Enterprise',
+      enterpriseOptional: '(optional)',
       email: 'Email',
       message: 'Message',
       send: 'Send',
@@ -300,6 +308,7 @@ export const translations: Record<Language, Translations> = {
       error: 'An error occurred. Please try again.',
       placeholders: {
         name: 'Your name',
+        enterprise: 'Your enterprise name',
         email: 'your@email.com',
         message: 'Tell us about your project...',
       },

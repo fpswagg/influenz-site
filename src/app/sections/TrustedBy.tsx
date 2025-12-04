@@ -11,7 +11,7 @@ export default function TrustedBy() {
   const t = translations[language]
 
   return (
-    <section id="trusted-by" className="py-20 px-6 lg:px-24 border-y border-dark-border">
+    <section id="trusted-by" className="py-20 px-6 lg:px-24 border-y border-light-border bg-light-surface/50">
       <div className="max-w-content mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,10 +38,10 @@ export default function TrustedBy() {
               transition={{ duration: 0.4, delay: index * 0.05 }}
               className="group"
             >
-              <div className="aspect-square rounded-xl border border-dark-border bg-dark-surface/50 flex flex-col items-center justify-center p-4 hover:border-violet-subtle/50 hover:bg-dark-surface transition-all duration-300 hover:shadow-lg hover:shadow-violet-subtle/10 hover:scale-105 cursor-pointer">
+              <div className="aspect-square rounded-xl border border-light-border bg-white flex flex-col items-center justify-center p-4 hover:border-violet-subtle/50 hover:bg-light-surface transition-all duration-300 hover:shadow-lg hover:shadow-violet-subtle/10 hover:scale-105 cursor-pointer">
                 {/* Logo - Image or fallback letters */}
                 {client.image ? (
-                  <div className="relative w-full h-full max-w-[80px] max-h-[80px] mb-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="relative w-full h-full max-w-[80px] max-h-[80px] mb-2 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
                     <Image
                       src={client.image}
                       alt={client.name}
