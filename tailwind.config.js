@@ -8,15 +8,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Light theme colors
+        // Light theme with purple text
         'light-bg': '#FFFFFF',
         'light-surface': '#F8F9FA',
         'light-border': '#E5E7EB',
-        'violet-subtle': '#8B5CF6',
-        'violet-muted': '#6D28D9',
-        'text-primary': '#1F2937',
-        'text-secondary': '#4B5563',
-        'text-muted': '#9CA3AF',
+        // Purple color palette matching the logo (darkened)
+        'purple-brand': '#6D28D9',
+        'purple-dark': '#581C87',
+        'purple-light': '#7C3AED',
+        'violet-subtle': '#6D28D9',
+        'violet-muted': '#5B21B6',
+        // Purple text colors (darkened)
+        'text-primary': '#581C87',
+        'text-secondary': '#6D28D9',
+        'text-muted': '#7C3AED',
+        'text-body': '#4C1D95',
       },
       fontFamily: {
         'heading': ['Inter', 'sans-serif'],
@@ -36,10 +42,10 @@ module.exports = {
     themes: [
       {
         influenz: {
-          primary: '#6A0DAD',
-          secondary: '#3A0D4A',
-          accent: '#C79BFF',
-          neutral: '#1A0C20',
+          primary: '#6D28D9',
+          secondary: '#581C87',
+          accent: '#7C3AED',
+          neutral: '#4C1D95',
           'base-100': '#FFFFFF',
           'base-200': '#F8F9FA',
         },

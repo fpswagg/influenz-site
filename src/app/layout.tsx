@@ -20,6 +20,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://influenz.cm'),
   title: 'iNFLUENZ',
   description: 'Agence de conseil & stratégie, relations presse, communication digitale et événementiel',
   icons: {

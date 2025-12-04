@@ -35,23 +35,23 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8 bg-white/60 backdrop-blur-sm rounded-2xl p-8 lg:p-10 shadow-xl shadow-black/5"
+            className="space-y-8 bg-white/70 backdrop-blur-sm rounded-2xl p-8 lg:p-10 shadow-xl shadow-purple-brand/5"
           >
             {/* Small label */}
             <div className="flex items-center gap-3">
-              <div className="w-12 h-px bg-violet-subtle" />
-              <span className="text-sm font-medium text-violet-subtle uppercase tracking-wider">
+              <div className="w-12 h-px bg-purple-brand" />
+              <span className="text-sm font-medium text-purple-brand uppercase tracking-wider">
                 {t.hero.label}
               </span>
             </div>
 
             {/* Main heading */}
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-text-primary">
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-purple-dark">
               {t.hero.title}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg lg:text-xl text-text-secondary leading-relaxed">
+            <p className="text-lg lg:text-xl text-purple-brand/80 leading-relaxed">
               {t.hero.subtitle}
             </p>
 
@@ -59,7 +59,7 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link
                 href="/projets"
-                className="px-8 py-4 bg-violet-subtle text-white font-medium rounded-lg hover:bg-violet-muted transition-colors shadow-lg shadow-violet-subtle/25 hover:shadow-xl hover:shadow-violet-subtle/30"
+                className="px-8 py-4 bg-purple-brand text-white font-medium rounded-lg hover:bg-purple-dark transition-colors shadow-lg shadow-purple-brand/25 hover:shadow-xl hover:shadow-purple-brand/30"
               >
                 {t.hero.cta}
               </Link>
@@ -67,7 +67,7 @@ export default function Hero() {
                 onClick={() => {
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="px-8 py-4 bg-white/90 border border-light-border text-text-primary font-medium rounded-lg hover:border-violet-subtle hover:text-violet-subtle transition-colors"
+                className="px-8 py-4 bg-white/90 border border-purple-light/50 text-purple-brand font-medium rounded-lg hover:border-purple-brand hover:bg-purple-brand hover:text-white transition-colors"
               >
                 {t.hero.ctaSecondary}
               </button>

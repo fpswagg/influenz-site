@@ -41,7 +41,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
+        <label htmlFor="name" className="block text-sm font-medium text-purple-brand mb-2">
           {t.contact.name}
         </label>
         <input
@@ -50,27 +50,27 @@ export default function ContactForm() {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           required
-          className="w-full px-4 py-3 bg-light-surface border border-light-border rounded-lg focus:outline-none focus:border-violet-subtle focus:ring-2 focus:ring-violet-subtle/20 transition-colors text-text-primary"
+          className="w-full px-4 py-3 bg-white border border-purple-light/30 rounded-lg focus:outline-none focus:border-purple-brand focus:ring-2 focus:ring-purple-brand/20 transition-colors text-purple-dark placeholder:text-purple-light"
           placeholder={t.contact.placeholders.name}
         />
       </div>
 
       <div>
-        <label htmlFor="enterprise" className="block text-sm font-medium text-text-secondary mb-2">
-          {t.contact.enterprise} <span className="text-text-muted">{t.contact.enterpriseOptional}</span>
+        <label htmlFor="enterprise" className="block text-sm font-medium text-purple-brand mb-2">
+          {t.contact.enterprise} <span className="text-purple-light">{t.contact.enterpriseOptional}</span>
         </label>
         <input
           type="text"
           id="enterprise"
           value={formData.enterprise}
           onChange={(e) => setFormData({ ...formData, enterprise: e.target.value })}
-          className="w-full px-4 py-3 bg-light-surface border border-light-border rounded-lg focus:outline-none focus:border-violet-subtle focus:ring-2 focus:ring-violet-subtle/20 transition-colors text-text-primary"
+          className="w-full px-4 py-3 bg-white border border-purple-light/30 rounded-lg focus:outline-none focus:border-purple-brand focus:ring-2 focus:ring-purple-brand/20 transition-colors text-purple-dark placeholder:text-purple-light"
           placeholder={t.contact.placeholders.enterprise}
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-text-secondary mb-2">
+        <label htmlFor="email" className="block text-sm font-medium text-purple-brand mb-2">
           {t.contact.email}
         </label>
         <input
@@ -79,13 +79,13 @@ export default function ContactForm() {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           required
-          className="w-full px-4 py-3 bg-light-surface border border-light-border rounded-lg focus:outline-none focus:border-violet-subtle focus:ring-2 focus:ring-violet-subtle/20 transition-colors text-text-primary"
+          className="w-full px-4 py-3 bg-white border border-purple-light/30 rounded-lg focus:outline-none focus:border-purple-brand focus:ring-2 focus:ring-purple-brand/20 transition-colors text-purple-dark placeholder:text-purple-light"
           placeholder={t.contact.placeholders.email}
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-text-secondary mb-2">
+        <label htmlFor="message" className="block text-sm font-medium text-purple-brand mb-2">
           {t.contact.message}
         </label>
         <textarea
@@ -94,7 +94,7 @@ export default function ContactForm() {
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           required
           rows={6}
-          className="w-full px-4 py-3 bg-light-surface border border-light-border rounded-lg focus:outline-none focus:border-violet-subtle focus:ring-2 focus:ring-violet-subtle/20 transition-colors text-text-primary resize-none"
+          className="w-full px-4 py-3 bg-white border border-purple-light/30 rounded-lg focus:outline-none focus:border-purple-brand focus:ring-2 focus:ring-purple-brand/20 transition-colors text-purple-dark placeholder:text-purple-light resize-none"
           placeholder={t.contact.placeholders.message}
         />
       </div>
@@ -114,7 +114,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full px-8 py-4 bg-violet-subtle text-white font-medium rounded-lg hover:bg-violet-muted transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-violet-subtle/25 hover:shadow-xl hover:shadow-violet-subtle/30"
+        className="w-full px-8 py-4 bg-purple-brand text-white font-medium rounded-lg hover:bg-purple-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-purple-brand/25 hover:shadow-xl hover:shadow-purple-brand/30"
       >
         {isSubmitting ? t.contact.sending : t.contact.send}
       </button>

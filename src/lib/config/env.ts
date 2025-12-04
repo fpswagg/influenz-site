@@ -6,8 +6,17 @@ export const env = {
   // Contact Information (accessible côté client)
   contact: {
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'info@influenz.cm',
-    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || process.env.CONTACT_PHONE || '+237 XX XX XX XX',
-    address: process.env.NEXT_PUBLIC_CONTACT_ADDRESS || process.env.CONTACT_ADDRESS || 'Yaoundé, Cameroun',
+    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || process.env.CONTACT_PHONE || '+237 699 22 24 40',
+    phoneSecondary: process.env.NEXT_PUBLIC_CONTACT_PHONE_SECONDARY || process.env.CONTACT_PHONE_SECONDARY || '+237 652 20 93 23',
+    address: process.env.NEXT_PUBLIC_CONTACT_ADDRESS || process.env.CONTACT_ADDRESS || 'BP 10107, Omnisports, Yaoundé, Cameroun',
+    postalBox: process.env.NEXT_PUBLIC_POSTAL_BOX || process.env.POSTAL_BOX || 'BP 10107, Omnisports, Yaoundé',
+  },
+  
+  // Company Legal Information
+  company: {
+    legalForm: process.env.NEXT_PUBLIC_LEGAL_FORM || process.env.LEGAL_FORM || 'SARL au capital de 990 000 FCAF',
+    niu: process.env.NEXT_PUBLIC_NIU || process.env.NIU || 'M032217160598Q',
+    rccm: process.env.NEXT_PUBLIC_RCCM || process.env.RCCM || 'RC/YAE/2022/B/962',
   },
 
   // Social Media Links (accessible côté client)

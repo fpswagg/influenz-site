@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useAppStore } from '@/lib/store'
 import SideNav from './SideNav'
@@ -20,7 +21,7 @@ export default function Header() {
         {isHomePage && (
           <button
             onClick={() => setIsSideNavVisible(!isSideNavVisible)}
-            className="hidden lg:flex px-4 py-2 text-sm font-medium text-text-primary hover:text-violet-subtle bg-light-surface border border-light-border rounded-lg transition-colors"
+            className="hidden lg:flex px-4 py-2 text-sm font-medium text-purple-brand hover:text-purple-dark bg-light-surface border border-light-border rounded-lg transition-colors"
             aria-label="Toggle navigation"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -36,17 +37,21 @@ export default function Header() {
         {/* Language Toggle */}
         <button
           onClick={() => setLanguage(language === 'fr' ? 'en' : 'fr')}
-          className="px-4 py-2 text-sm font-medium text-text-primary hover:text-violet-subtle bg-light-surface border border-light-border rounded-lg transition-colors"
+          className="px-4 py-2 text-sm font-medium text-purple-brand hover:text-purple-dark bg-light-surface border border-light-border rounded-lg transition-colors"
         >
           {language === 'fr' ? 'EN' : 'FR'}
         </button>
 
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-xl font-bold text-text-primary hover:text-violet-subtle transition-colors"
-        >
-          iNFLUENZ
+        {/* Logo Image */}
+        <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+          <Image
+            src="/images/text-logo.png"
+            alt="iNFLUENZ"
+            width={120}
+            height={32}
+            className="h-8 w-auto"
+            priority
+          />
         </Link>
       </div>
 

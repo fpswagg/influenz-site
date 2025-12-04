@@ -58,6 +58,7 @@ export interface Translations {
     rights: string
     address: string
     phone: string
+    legalInfo: string
   }
   contact: {
     title: string
@@ -197,8 +198,9 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contact',
       follow: 'Suivez-nous',
       rights: 'Tous droits réservés.',
-      address: 'Yaoundé, Cameroun',
-      phone: '+237 XX XX XX XX',
+      address: 'BP 10107, Omnisports, Yaoundé, Cameroun',
+      phone: '+237 699 22 24 40 / +237 652 20 93 23',
+      legalInfo: 'Informations légales',
     },
     project: {
       back: 'Retour aux projets',
@@ -318,8 +320,9 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contact',
       follow: 'Follow us',
       rights: 'All rights reserved.',
-      address: 'Yaoundé, Cameroon',
-      phone: '+237 XX XX XX XX',
+      address: 'BP 10107, Omnisports, Yaoundé, Cameroon',
+      phone: '+237 699 22 24 40 / +237 652 20 93 23',
+      legalInfo: 'Legal information',
     },
     project: {
       back: 'Back to projects',

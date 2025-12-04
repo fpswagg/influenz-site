@@ -31,25 +31,25 @@ export default function Home() {
         <div className="max-w-content mx-auto">
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-sm font-medium text-text-muted uppercase tracking-wider">
+              <span className="text-sm font-medium text-purple-light uppercase tracking-wider">
                 04
               </span>
-              <div className="w-12 h-px bg-violet-subtle" />
-              <span className="text-sm font-medium text-text-secondary uppercase tracking-wider">
+              <div className="w-12 h-px bg-purple-brand" />
+              <span className="text-sm font-medium text-purple-brand uppercase tracking-wider">
                 Contact
               </span>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-text-primary">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-purple-dark">
               {t.contact.title}
             </h2>
-            <p className="text-xl text-text-secondary max-w-2xl">
+            <p className="text-xl text-purple-brand/80 max-w-2xl">
               {language === 'fr' 
                 ? 'Parlons de votre projet. Nous vous répondons sous 24h.'
                 : 'Let\'s talk about your project. We respond within 24 hours.'}
             </p>
           </div>
 
-          <div className="max-w-2xl bg-light-surface/50 p-8 lg:p-12 rounded-2xl border border-light-border">
+          <div className="max-w-2xl bg-purple-brand/5 p-8 lg:p-12 rounded-2xl border border-purple-light/20">
             <ContactForm />
           </div>
         </div>

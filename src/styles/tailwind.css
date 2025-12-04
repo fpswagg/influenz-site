@@ -10,7 +10,7 @@
   }
   
   body {
-    @apply font-body text-text-primary bg-light-bg antialiased;
+    @apply font-body text-text-body bg-light-bg antialiased;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -20,9 +20,13 @@
     @apply font-heading text-text-primary;
     letter-spacing: -0.02em;
   }
+
+  p {
+    @apply text-text-secondary;
+  }
   
   ::selection {
-    @apply bg-violet-subtle/30 text-white;
+    @apply bg-purple-brand/30 text-white;
   }
 }
 
