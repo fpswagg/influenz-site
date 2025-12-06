@@ -205,7 +205,7 @@ export const projectsData: ProjectData[] = [
 // ============================================
 
 export const clientsData: Client[] = [
-  { id: '1', name: 'Cameroon Civil Aviation Authority', logo: 'CAA', image: '/images/clients/cmr-civil-aviation-authority.png' },
+  { id: '1', name: 'CCAA', logo: 'CC', image: '/images/clients/ccaa.png' },
   { id: '2', name: 'FIFPRO', logo: 'FF', image: '/images/clients/fifpro.png' },
   { id: '3', name: 'Ippon', logo: 'IP', image: '/images/clients/ippon.png' },
   { id: '4', name: 'Nexar', logo: 'NX', image: '/images/clients/nexar.png' },
@@ -213,6 +213,7 @@ export const clientsData: Client[] = [
   { id: '6', name: 'SYNAFOC', logo: 'SY', image: '/images/clients/synafoc.png' },
   { id: '7', name: 'UPF', logo: 'UP', image: '/images/clients/upf.png' },
   { id: '8', name: 'BEAC', logo: 'BE', image: '/images/clients/beac.png' },
+  { id: '9', name: 'EcoMatin', logo: 'EM', image: '/images/clients/ecomatin.png' },
 ]
 
 // ============================================

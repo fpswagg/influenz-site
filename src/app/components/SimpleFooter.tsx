@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useAppStore } from '@/lib/store'
 import { translations } from '@/lib/i18n'
 import { env } from '@/lib/config/env'
@@ -14,7 +15,15 @@ export default function SimpleFooter() {
         <div className="grid md:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold mb-4 text-purple-dark">iNFLUENZ</h3>
+            <div className="mb-4">
+              <Image
+                src="/images/text-logo.png"
+                alt="iNFLUENZ"
+                width={140}
+                height={38}
+                className="h-10 w-auto"
+              />
+            </div>
             <p className="text-purple-brand/70 text-sm">
               {t.footer.tagline}
             </p>
@@ -103,8 +112,18 @@ export default function SimpleFooter() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-purple-light/20 text-center text-purple-light text-sm">
-          <p>&copy; {new Date().getFullYear()} INFLUENZ. {t.footer.rights}</p>
+        <div className="pt-8 border-t border-purple-light/20 text-center">
+          <div className="flex items-center justify-center gap-2 text-sm text-purple-light">
+            <span>&copy; {new Date().getFullYear()}</span>
+            <Image
+              src="/images/text-logo.png"
+              alt="iNFLUENZ"
+              width={100}
+              height={27}
+              className="h-6 w-auto"
+            />
+            <span>. {t.footer.rights}</span>
+          </div>
         </div>
       </div>
     </footer>

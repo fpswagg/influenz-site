@@ -41,22 +41,24 @@ export default function TrustedBy() {
               <div className="aspect-square rounded-xl border border-purple-light/20 bg-white flex flex-col items-center justify-center p-4 hover:border-purple-brand/50 hover:bg-purple-brand/5 transition-all duration-300 hover:shadow-lg hover:shadow-purple-brand/10 hover:scale-105 cursor-pointer">
                 {/* Logo - Image or fallback letters */}
                 {client.image ? (
-                  <div className="relative w-full h-full max-w-[80px] max-h-[80px] mb-2 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="relative w-[80px] h-[80px] mb-2 opacity-70 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <Image
                       src={client.image}
                       alt={client.name}
                       fill
                       className="object-contain"
-                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 12.5vw"
+                      sizes="80px"
                     />
                   </div>
                 ) : (
-                  <div className="text-3xl font-bold text-purple-light group-hover:text-purple-brand transition-colors duration-300 mb-2">
-                    {client.logo}
+                  <div className="w-[80px] h-[80px] flex items-center justify-center mb-2">
+                    <span className="text-3xl font-bold text-purple-light group-hover:text-purple-brand transition-colors duration-300">
+                      {client.logo}
+                    </span>
                   </div>
                 )}
                 {/* Client name */}
-                <p className="text-xs text-purple-brand/60 group-hover:text-purple-brand transition-colors duration-300 text-center">
+                <p className="text-xs text-purple-brand/60 group-hover:text-purple-brand transition-colors duration-300 text-center line-clamp-2">
                   {client.name}
                 </p>
               </div>
