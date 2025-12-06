@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { useAppStore } from '@/lib/store'
 import { translations } from '@/lib/i18n'
@@ -96,10 +97,20 @@ export default function ProjetsPage() {
                   >
                     <div className="border border-purple-light/20 rounded-2xl overflow-hidden hover:border-purple-brand/50 transition-colors bg-white shadow-sm hover:shadow-lg hover:shadow-purple-brand/10">
                       {/* Image */}
-                      <div className="aspect-video bg-purple-brand/5 flex items-center justify-center border-b border-purple-light/20">
-                        <div className="text-6xl font-bold text-purple-brand/30">
-                          {getCategoryTranslation(project.categoryId, language).charAt(0)}
-                        </div>
+                      <div className="aspect-video bg-purple-brand/5 flex items-center justify-center border-b border-purple-light/20 relative overflow-hidden">
+                        {project.image ? (
+                          <Image
+                            src={project.image}
+                            alt={translation.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        ) : (
+                          <div className="text-6xl font-bold text-purple-brand/30">
+                            {getCategoryTranslation(project.categoryId, language).charAt(0)}
+                          </div>
+                        )}
                       </div>
                       
                       {/* Content */}

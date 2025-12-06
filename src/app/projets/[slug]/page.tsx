@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useParams, useSearchParams } from 'next/navigation'
 import { useAppStore } from '@/lib/store'
 import { translations } from '@/lib/i18n'
@@ -79,11 +80,21 @@ export default function ProjectDetailPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="aspect-video bg-purple-brand/5 rounded-2xl border border-purple-light/20 flex items-center justify-center mb-16 shadow-sm"
+            className="aspect-video bg-purple-brand/5 rounded-2xl border border-purple-light/20 flex items-center justify-center mb-16 shadow-sm overflow-hidden relative"
           >
-            <div className="text-8xl font-bold text-purple-brand/30">
-              {getCategoryTranslation(project.categoryId, language).charAt(0)}
-            </div>
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={translation.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 896px"
+              />
+            ) : (
+              <div className="text-8xl font-bold text-purple-brand/30">
+                {getCategoryTranslation(project.categoryId, language).charAt(0)}
+              </div>
+            )}
           </motion.div>
 
           {/* Project Details */}
@@ -185,11 +196,33 @@ export default function ProjectDetailPage() {
             </ul>
           </motion.div>
 
+          {/* External Link (if available) */}
+          {project.link && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.65 }}
+              className="mt-8 text-center"
+            >
+              <a
+                href={project.link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-purple-light/30 rounded-lg hover:border-purple-brand text-purple-brand hover:bg-purple-brand hover:text-white transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                <span className="font-medium">{project.link.label}</span>
+              </a>
+            </motion.div>
+          )}
+
           {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.65 }}
+            transition={{ duration: 0.4, delay: 0.7 }}
             className="mt-16 text-center"
           >
             <p className="text-purple-brand/80 mb-6">

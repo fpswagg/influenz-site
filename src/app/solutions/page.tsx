@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { useAppStore } from '@/lib/store'
 import { translations } from '@/lib/i18n'
@@ -95,13 +96,33 @@ export default function SolutionsPage() {
                       className="group block h-full"
                     >
                       <div className="h-full border border-purple-light/20 rounded-2xl overflow-hidden hover:border-purple-brand/50 transition-colors bg-white shadow-sm hover:shadow-lg hover:shadow-purple-brand/10 flex flex-col">
-                        {/* Header with icon */}
-                        <div className="p-6 bg-purple-brand/5 border-b border-purple-light/20 flex items-center justify-between">
-                          <span className="text-5xl">{solution.icon}</span>
-                          <span className="text-xs font-medium text-purple-light uppercase tracking-wider">
-                            {getSolutionCategoryTranslation(solution.categoryId, language)}
-                          </span>
-                        </div>
+                        {/* Header with icon or image */}
+                        {solution.image ? (
+                          <div className="aspect-video relative overflow-hidden border-b border-purple-light/20">
+                            <Image
+                              src={solution.image}
+                              alt={translation.title}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                              sizes="(max-width: 768px) 100vw, 33vw"
+                            />
+                            <div className="absolute top-3 right-3">
+                              <span className="px-2 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium text-purple-brand uppercase tracking-wider rounded">
+                                {getSolutionCategoryTranslation(solution.categoryId, language)}
+                              </span>
+                            </div>
+                            <div className="absolute bottom-3 left-3">
+                              <span className="text-4xl drop-shadow-lg">{solution.icon}</span>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="p-6 bg-purple-brand/5 border-b border-purple-light/20 flex items-center justify-between">
+                            <span className="text-5xl">{solution.icon}</span>
+                            <span className="text-xs font-medium text-purple-light uppercase tracking-wider">
+                              {getSolutionCategoryTranslation(solution.categoryId, language)}
+                            </span>
+                          </div>
+                        )}
                         
                         {/* Content */}
                         <div className="p-6 flex-grow flex flex-col">

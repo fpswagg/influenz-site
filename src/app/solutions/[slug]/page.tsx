@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useParams, useSearchParams } from 'next/navigation'
 import { useAppStore } from '@/lib/store'
 import { translations } from '@/lib/i18n'
@@ -74,6 +75,50 @@ export default function SolutionDetailPage() {
             </h1>
           </motion.div>
 
+          {/* Images Gallery (if available) */}
+          {(solution.images && solution.images.length > 0) ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="mb-12"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {solution.images.map((img, index) => (
+                  <div
+                    key={index}
+                    className={`aspect-video bg-purple-brand/5 rounded-2xl border border-purple-light/20 overflow-hidden relative ${
+                      solution.images!.length === 1 ? 'md:col-span-2' : ''
+                    }`}
+                  >
+                    <Image
+                      src={img}
+                      alt={`${translation.title} - ${index + 1}`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, 448px"
+                    />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ) : solution.image ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="aspect-video bg-purple-brand/5 rounded-2xl border border-purple-light/20 mb-12 overflow-hidden relative"
+            >
+              <Image
+                src={solution.image}
+                alt={translation.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 896px"
+              />
+            </motion.div>
+          ) : null}
+
           {/* Problem */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -131,7 +176,7 @@ export default function SolutionDetailPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.6 }}
-            className="mb-16 p-8 border border-purple-brand/30 rounded-2xl bg-white"
+            className="mb-12 p-8 border border-purple-brand/30 rounded-2xl bg-white"
           >
             <h2 className="text-2xl font-bold mb-8 text-purple-dark">{t.solution.results}</h2>
             <div className="grid md:grid-cols-2 gap-4">
@@ -145,6 +190,36 @@ export default function SolutionDetailPage() {
               ))}
             </div>
           </motion.div>
+
+          {/* External Links (if available) */}
+          {solution.links && solution.links.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.65 }}
+              className="mb-12"
+            >
+              <h2 className="text-xl font-bold mb-4 text-purple-dark">
+                {language === 'fr' ? 'En savoir plus' : 'Learn more'}
+              </h2>
+              <div className="flex flex-wrap gap-3">
+                {solution.links.map((link, index) => (
+                  <a
+                    key={index}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 border border-purple-light/30 rounded-lg hover:border-purple-brand text-purple-brand hover:bg-purple-brand hover:text-white transition-colors text-sm"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    <span className="font-medium">{link.labels[language]}</span>
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          )}
 
           {/* CTA */}
           <motion.div

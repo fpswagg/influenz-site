@@ -4,6 +4,11 @@ import { Language } from './i18n'
 // TYPES
 // ============================================
 
+export interface ProjectLink {
+  label: string
+  url: string
+}
+
 export interface ProjectData {
   id: string
   slug: string
@@ -11,8 +16,9 @@ export interface ProjectData {
   year: string
   client: string
   serviceIds: string[] // IDs des services
-  image: string
-  images: string[]
+  image?: string // Optional main image
+  images?: string[] // Optional gallery images
+  link?: ProjectLink // Optional external link (e.g., to the live project)
   translations: {
     [key in Language]: {
       title: string
@@ -33,12 +39,22 @@ export interface Client {
   image?: string // Optional image path (e.g., '/images/clients/microsoft.png')
 }
 
+export interface SolutionLink {
+  url: string
+  labels: {
+    [key in Language]: string
+  }
+}
+
 export interface SolutionData {
   id: string
   slug: string
   categoryId: string // Category ID (communication, strategy, digital, events)
   icon: string // Emoji or icon name
   featured: boolean // Show on homepage
+  image?: string // Optional main image
+  images?: string[] // Optional gallery images
+  links?: SolutionLink[] // Optional external links (case studies, articles, etc.)
   translations: {
     [key in Language]: {
       title: string
@@ -522,6 +538,63 @@ export const solutionsData: SolutionData[] = [
           'New commercial momentum',
         ],
         callToAction: 'Let\'s reinvent your brand',
+      },
+    },
+  },
+  {
+    id: '7',
+    slug: 'nson-ayan',
+    categoryId: 'digital',
+    icon: '🌍',
+    featured: true,
+    image: '/images/solutions/nson-ayan/01.png',
+    images: [
+      '/images/solutions/nson-ayan/01.png',
+      '/images/solutions/nson-ayan/02.png',
+    ],
+    links: [
+      { url: 'https://nson-ayan.vercel.app', labels: { fr: 'Voir le site', en: 'View website' } },
+    ],
+    translations: {
+      fr: {
+        title: 'Nsôn Ayañ - Plateforme communautaire',
+        problem: 'Les membres de la tribu Mvae dispersés à travers le monde avaient besoin d\'un espace numérique pour se connecter, préserver leur histoire et partager des projets avec leur communauté.',
+        approach: 'Nous avons conçu et développé une plateforme web complète permettant aux Mvae du monde entier de se retrouver, découvrir leurs membres et figures emblématiques, explorer leur histoire commune et collaborer sur des projets communautaires.',
+        steps: [
+          'Analyse des besoins de la communauté Mvae',
+          'Conception UX/UI adaptée aux valeurs culturelles',
+          'Développement d\'un annuaire des membres par pays et ville',
+          'Création d\'une section historique et culturelle',
+          'Mise en place d\'un espace de partage de projets',
+          'Système multilingue (français/anglais)',
+        ],
+        results: [
+          'Communauté Mvae connectée à l\'international',
+          'Préservation de l\'histoire et de la culture',
+          'Plateforme de collaboration pour les projets',
+          'Renforcement des liens intergénérationnels',
+        ],
+        callToAction: 'Créons votre plateforme communautaire',
+      },
+      en: {
+        title: 'Nsôn Ayañ - Community Platform',
+        problem: 'Members of the Mvae tribe scattered around the world needed a digital space to connect, preserve their history and share projects with their community.',
+        approach: 'We designed and developed a comprehensive web platform allowing Mvae people worldwide to reconnect, discover their members and iconic figures, explore their shared history and collaborate on community projects.',
+        steps: [
+          'Analysis of Mvae community needs',
+          'UX/UI design adapted to cultural values',
+          'Development of member directory by country and city',
+          'Creation of historical and cultural section',
+          'Implementation of project sharing space',
+          'Multilingual system (French/English)',
+        ],
+        results: [
+          'Mvae community connected internationally',
+          'Preservation of history and culture',
+          'Collaboration platform for projects',
+          'Strengthened intergenerational bonds',
+        ],
+        callToAction: 'Let\'s create your community platform',
       },
     },
   },
