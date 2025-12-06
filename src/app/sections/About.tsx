@@ -16,7 +16,7 @@ export default function About() {
         <div className="mb-20">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-sm font-medium text-purple-light uppercase tracking-wider">
-              03
+              04
             </span>
             <div className="w-12 h-px bg-purple-brand" />
             <span className="text-sm font-medium text-purple-brand uppercase tracking-wider">

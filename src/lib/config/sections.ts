@@ -29,16 +29,22 @@ export const homeSections: SectionConfig[] = [
     order: 3,
   },
   {
+    id: 'solutions',
+    component: 'Solutions',
+    enabled: true,
+    order: 4,
+  },
+  {
     id: 'about',
     component: 'About',
     enabled: true,
-    order: 4,
+    order: 5,
   },
   {
     id: 'contact',
     component: 'ContactForm',
     enabled: true,
-    order: 5,
+    order: 6,
   },
 ]
 
@@ -60,6 +66,7 @@ export function getNavSections(language: 'fr' | 'en' = 'fr'): NavSection[] {
   const labels: Record<string, Record<string, string>> = {
     hero: { fr: 'Accueil', en: 'Home' },
     projects: { fr: 'Projets', en: 'Projects' },
+    solutions: { fr: 'Solutions', en: 'Solutions' },
     about: { fr: 'À propos', en: 'About' },
     contact: { fr: 'Contact', en: 'Contact' },
   }

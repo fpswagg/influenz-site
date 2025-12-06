@@ -5,6 +5,7 @@ export interface Translations {
     home: string
     about: string
     projects: string
+    solutions: string
     contact: string
   }
   hero: {
@@ -100,6 +101,29 @@ export interface Translations {
     noProjects: string
     viewProject: string
   }
+  solutions: {
+    title: string
+    subtitle: string
+    cta: string
+    viewAll: string
+  }
+  solutionsPage: {
+    title: string
+    subtitle: string
+    back: string
+    noSolutions: string
+    viewSolution: string
+  }
+  solution: {
+    back: string
+    backSimple: string
+    features: string
+    benefits: string
+    contactUs: string
+    interested: string
+    notFound: string
+    backToSolutions: string
+  }
 }
 
 export const translations: Record<Language, Translations> = {
@@ -108,6 +132,7 @@ export const translations: Record<Language, Translations> = {
       home: 'Accueil',
       about: 'À propos',
       projects: 'Projets',
+      solutions: 'Solutions',
       contact: 'Contact',
     },
     hero: {
@@ -122,7 +147,7 @@ export const translations: Record<Language, Translations> = {
       subtitle: 'Nos clients',
     },
     projects: {
-      title: 'Projets réalisés',
+      title: 'Nos projets',
       subtitle: 'Découvrez nos réalisations qui marquent les esprits',
       cta: 'Voir le projet',
     },
@@ -218,11 +243,34 @@ export const translations: Record<Language, Translations> = {
       backToProjects: 'Retour aux projets',
     },
     projectsPage: {
-      title: 'Tous nos projets',
+      title: 'Nos projets',
       subtitle: 'Découvrez l\'ensemble de nos réalisations et les résultats obtenus pour nos clients.',
       back: 'Retour',
       noProjects: 'Aucun projet trouvé',
       viewProject: 'Voir le projet',
+    },
+    solutions: {
+      title: 'Nos solutions',
+      subtitle: 'Des services sur mesure pour répondre à tous vos besoins en communication',
+      cta: 'En savoir plus',
+      viewAll: 'Voir toutes nos solutions',
+    },
+    solutionsPage: {
+      title: 'Nos solutions',
+      subtitle: 'Découvrez l\'ensemble de nos services et trouvez la solution adaptée à vos besoins.',
+      back: 'Retour',
+      noSolutions: 'Aucune solution trouvée',
+      viewSolution: 'Découvrir',
+    },
+    solution: {
+      back: 'Retour aux solutions',
+      backSimple: 'Retour',
+      features: 'Ce que nous proposons',
+      benefits: 'Les avantages',
+      contactUs: 'Nous contacter',
+      interested: 'Cette solution vous intéresse ?',
+      notFound: 'Solution non trouvée',
+      backToSolutions: 'Retour aux solutions',
     },
   },
   en: {
@@ -230,6 +278,7 @@ export const translations: Record<Language, Translations> = {
       home: 'Home',
       about: 'About',
       projects: 'Projects',
+      solutions: 'Solutions',
       contact: 'Contact',
     },
     hero: {
@@ -244,7 +293,7 @@ export const translations: Record<Language, Translations> = {
       subtitle: 'Our clients',
     },
     projects: {
-      title: 'Completed Projects',
+      title: 'Our Projects',
       subtitle: 'Discover our impactful achievements',
       cta: 'View project',
     },
@@ -340,11 +389,34 @@ export const translations: Record<Language, Translations> = {
       backToProjects: 'Back to projects',
     },
     projectsPage: {
-      title: 'All our projects',
+      title: 'Our Projects',
       subtitle: 'Discover all our achievements and the results obtained for our clients.',
       back: 'Back',
       noProjects: 'No projects found',
       viewProject: 'View project',
+    },
+    solutions: {
+      title: 'Our Solutions',
+      subtitle: 'Custom services to meet all your communication needs',
+      cta: 'Learn more',
+      viewAll: 'View all our solutions',
+    },
+    solutionsPage: {
+      title: 'Our Solutions',
+      subtitle: 'Discover all our services and find the solution that suits your needs.',
+      back: 'Back',
+      noSolutions: 'No solutions found',
+      viewSolution: 'Discover',
+    },
+    solution: {
+      back: 'Back to solutions',
+      backSimple: 'Back',
+      features: 'What we offer',
+      benefits: 'The benefits',
+      contactUs: 'Contact us',
+      interested: 'Interested in this solution?',
+      notFound: 'Solution not found',
+      backToSolutions: 'Back to solutions',
     },
   },
 }

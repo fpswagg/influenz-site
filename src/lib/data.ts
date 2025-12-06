@@ -33,6 +33,24 @@ export interface Client {
   image?: string // Optional image path (e.g., '/images/clients/microsoft.png')
 }
 
+export interface SolutionData {
+  id: string
+  slug: string
+  categoryId: string // Category ID (web, digital, press, strategy, events)
+  icon: string // Emoji or icon name
+  featured: boolean // Show on homepage
+  translations: {
+    [key in Language]: {
+      title: string
+      shortDescription: string
+      description: string
+      features: string[]
+      benefits: string[]
+      callToAction: string
+    }
+  }
+}
+
 // ============================================
 // PROJECTS DATA
 // ============================================
@@ -201,6 +219,315 @@ export const projectsData: ProjectData[] = [
 ]
 
 // ============================================
+// SOLUTIONS DATA
+// ============================================
+
+export const solutionCategoriesData = [
+  { id: 'all', fr: 'Toutes', en: 'All' },
+  { id: 'web', fr: 'Web & Digital', en: 'Web & Digital' },
+  { id: 'communication', fr: 'Communication', en: 'Communication' },
+  { id: 'strategy', fr: 'Stratégie', en: 'Strategy' },
+  { id: 'events', fr: 'Événementiel', en: 'Events' },
+]
+
+export const solutionsData: SolutionData[] = [
+  {
+    id: '1',
+    slug: 'site-web',
+    categoryId: 'web',
+    icon: '🌐',
+    featured: true,
+    translations: {
+      fr: {
+        title: 'Site Web',
+        shortDescription: 'Création de sites web modernes et performants pour renforcer votre présence digitale.',
+        description: 'Nous concevons des sites web sur mesure, alliant design moderne, performance technique et expérience utilisateur optimale. Du site vitrine au e-commerce, nous vous accompagnons dans tous vos projets web.',
+        features: [
+          'Design sur mesure et responsive',
+          'Optimisation SEO intégrée',
+          'Performance et rapidité',
+          'Interface d\'administration intuitive',
+          'Hébergement et maintenance',
+          'Intégration réseaux sociaux',
+        ],
+        benefits: [
+          'Visibilité accrue sur internet',
+          'Image professionnelle renforcée',
+          'Génération de leads qualifiés',
+          'Disponibilité 24h/24',
+        ],
+        callToAction: 'Créer mon site web',
+      },
+      en: {
+        title: 'Website',
+        shortDescription: 'Creation of modern and high-performance websites to strengthen your digital presence.',
+        description: 'We design custom websites combining modern design, technical performance and optimal user experience. From showcase sites to e-commerce, we support you in all your web projects.',
+        features: [
+          'Custom and responsive design',
+          'Integrated SEO optimization',
+          'Performance and speed',
+          'Intuitive admin interface',
+          'Hosting and maintenance',
+          'Social media integration',
+        ],
+        benefits: [
+          'Increased visibility on the internet',
+          'Enhanced professional image',
+          'Qualified lead generation',
+          '24/7 availability',
+        ],
+        callToAction: 'Create my website',
+      },
+    },
+  },
+  {
+    id: '2',
+    slug: 'communication-digitale',
+    categoryId: 'communication',
+    icon: '📱',
+    featured: true,
+    translations: {
+      fr: {
+        title: 'Communication Digitale',
+        shortDescription: 'Stratégie digitale complète pour maximiser votre impact sur les réseaux sociaux.',
+        description: 'Développez votre présence en ligne avec une stratégie digitale cohérente et efficace. De la gestion des réseaux sociaux à la création de contenu, nous vous aidons à atteindre vos objectifs.',
+        features: [
+          'Gestion des réseaux sociaux',
+          'Création de contenu engageant',
+          'Community management',
+          'Campagnes publicitaires ciblées',
+          'Analyse et reporting',
+          'Veille et e-réputation',
+        ],
+        benefits: [
+          'Engagement accru de votre communauté',
+          'Notoriété de marque renforcée',
+          'Trafic qualifié vers votre site',
+          'ROI mesurable',
+        ],
+        callToAction: 'Booster ma présence digitale',
+      },
+      en: {
+        title: 'Digital Communication',
+        shortDescription: 'Complete digital strategy to maximize your impact on social media.',
+        description: 'Develop your online presence with a coherent and effective digital strategy. From social media management to content creation, we help you achieve your goals.',
+        features: [
+          'Social media management',
+          'Engaging content creation',
+          'Community management',
+          'Targeted advertising campaigns',
+          'Analysis and reporting',
+          'Monitoring and e-reputation',
+        ],
+        benefits: [
+          'Increased community engagement',
+          'Enhanced brand awareness',
+          'Qualified traffic to your site',
+          'Measurable ROI',
+        ],
+        callToAction: 'Boost my digital presence',
+      },
+    },
+  },
+  {
+    id: '3',
+    slug: 'relations-presse',
+    categoryId: 'communication',
+    icon: '📰',
+    featured: true,
+    translations: {
+      fr: {
+        title: 'Relations Presse',
+        shortDescription: 'Gestion stratégique de vos relations avec les médias pour une couverture optimale.',
+        description: 'Bénéficiez d\'une visibilité médiatique maximale grâce à notre expertise en relations presse. Nous développons et entretenons vos relations avec les journalistes et influenceurs clés.',
+        features: [
+          'Stratégie médias personnalisée',
+          'Rédaction de communiqués de presse',
+          'Organisation de conférences de presse',
+          'Media training',
+          'Revue de presse quotidienne',
+          'Gestion de crise médiatique',
+        ],
+        benefits: [
+          'Couverture médiatique étendue',
+          'Crédibilité renforcée',
+          'Messages clés diffusés efficacement',
+          'Relations durables avec les médias',
+        ],
+        callToAction: 'Développer ma visibilité médiatique',
+      },
+      en: {
+        title: 'Press Relations',
+        shortDescription: 'Strategic management of your media relations for optimal coverage.',
+        description: 'Benefit from maximum media visibility thanks to our expertise in press relations. We develop and maintain your relationships with key journalists and influencers.',
+        features: [
+          'Personalized media strategy',
+          'Press release writing',
+          'Press conference organization',
+          'Media training',
+          'Daily press review',
+          'Media crisis management',
+        ],
+        benefits: [
+          'Extended media coverage',
+          'Enhanced credibility',
+          'Key messages effectively disseminated',
+          'Lasting relationships with media',
+        ],
+        callToAction: 'Develop my media visibility',
+      },
+    },
+  },
+  {
+    id: '4',
+    slug: 'conseil-strategie',
+    categoryId: 'strategy',
+    icon: '🎯',
+    featured: true,
+    translations: {
+      fr: {
+        title: 'Conseil & Stratégie',
+        shortDescription: 'Accompagnement stratégique pour définir et atteindre vos objectifs de communication.',
+        description: 'Nos experts vous accompagnent dans l\'élaboration et la mise en œuvre de votre stratégie de communication. Audit, recommandations et accompagnement personnalisé pour maximiser votre impact.',
+        features: [
+          'Audit de communication',
+          'Définition de la stratégie',
+          'Plan de communication',
+          'Positionnement de marque',
+          'Accompagnement au changement',
+          'Formation des équipes',
+        ],
+        benefits: [
+          'Vision claire de vos objectifs',
+          'Stratégie adaptée à vos enjeux',
+          'Optimisation des ressources',
+          'Résultats mesurables',
+        ],
+        callToAction: 'Définir ma stratégie',
+      },
+      en: {
+        title: 'Consulting & Strategy',
+        shortDescription: 'Strategic support to define and achieve your communication goals.',
+        description: 'Our experts support you in developing and implementing your communication strategy. Audit, recommendations and personalized support to maximize your impact.',
+        features: [
+          'Communication audit',
+          'Strategy definition',
+          'Communication plan',
+          'Brand positioning',
+          'Change management support',
+          'Team training',
+        ],
+        benefits: [
+          'Clear vision of your objectives',
+          'Strategy adapted to your challenges',
+          'Resource optimization',
+          'Measurable results',
+        ],
+        callToAction: 'Define my strategy',
+      },
+    },
+  },
+  {
+    id: '5',
+    slug: 'evenementiel',
+    categoryId: 'events',
+    icon: '🎪',
+    featured: true,
+    translations: {
+      fr: {
+        title: 'Événementiel',
+        shortDescription: 'Organisation d\'événements corporate mémorables et impactants.',
+        description: 'De la conception à la réalisation, nous créons des événements sur mesure qui marquent les esprits. Conférences, séminaires, lancements de produits ou soirées de gala, nous gérons tous les aspects de votre événement.',
+        features: [
+          'Conception créative',
+          'Gestion logistique complète',
+          'Production audiovisuelle',
+          'Coordination des prestataires',
+          'Communication événementielle',
+          'Bilan et analyse post-événement',
+        ],
+        benefits: [
+          'Événements clé en main',
+          'Expériences mémorables',
+          'Image de marque renforcée',
+          'Objectifs atteints',
+        ],
+        callToAction: 'Organiser mon événement',
+      },
+      en: {
+        title: 'Events',
+        shortDescription: 'Organization of memorable and impactful corporate events.',
+        description: 'From design to execution, we create custom events that leave a lasting impression. Conferences, seminars, product launches or gala evenings, we manage all aspects of your event.',
+        features: [
+          'Creative design',
+          'Complete logistics management',
+          'Audiovisual production',
+          'Vendor coordination',
+          'Event communication',
+          'Post-event analysis and reporting',
+        ],
+        benefits: [
+          'Turnkey events',
+          'Memorable experiences',
+          'Enhanced brand image',
+          'Objectives achieved',
+        ],
+        callToAction: 'Organize my event',
+      },
+    },
+  },
+  {
+    id: '6',
+    slug: 'branding-identite',
+    categoryId: 'strategy',
+    icon: '✨',
+    featured: false,
+    translations: {
+      fr: {
+        title: 'Branding & Identité',
+        shortDescription: 'Création et refonte d\'identité visuelle pour une image de marque forte.',
+        description: 'Construisez une identité de marque distinctive et mémorable. Du logo à la charte graphique complète, nous créons l\'univers visuel qui vous ressemble et vous différencie.',
+        features: [
+          'Création de logo',
+          'Charte graphique complète',
+          'Supports de communication',
+          'Guidelines de marque',
+          'Déclinaison multi-supports',
+          'Refonte d\'identité',
+        ],
+        benefits: [
+          'Image cohérente et professionnelle',
+          'Différenciation concurrentielle',
+          'Reconnaissance de marque',
+          'Confiance renforcée',
+        ],
+        callToAction: 'Créer mon identité',
+      },
+      en: {
+        title: 'Branding & Identity',
+        shortDescription: 'Creation and redesign of visual identity for a strong brand image.',
+        description: 'Build a distinctive and memorable brand identity. From logo to complete graphic charter, we create the visual universe that reflects you and sets you apart.',
+        features: [
+          'Logo creation',
+          'Complete graphic charter',
+          'Communication materials',
+          'Brand guidelines',
+          'Multi-support adaptation',
+          'Identity redesign',
+        ],
+        benefits: [
+          'Coherent and professional image',
+          'Competitive differentiation',
+          'Brand recognition',
+          'Enhanced trust',
+        ],
+        callToAction: 'Create my identity',
+      },
+    },
+  },
+]
+
+// ============================================
 // CLIENTS DATA
 // ============================================
 
@@ -277,5 +604,30 @@ export function getProjectCategory(project: ProjectData): string {
 
 export function getProjectServices(project: ProjectData, language: Language): string[] {
   return project.serviceIds.map(id => getServiceTranslation(id, language))
+}
+
+// ============================================
+// SOLUTIONS HELPER FUNCTIONS
+// ============================================
+
+export function getSolutionBySlug(slug: string): SolutionData | undefined {
+  return solutionsData.find(solution => solution.slug === slug)
+}
+
+export function getAllSolutionSlugs(): string[] {
+  return solutionsData.map(solution => solution.slug)
+}
+
+export function getSolutionTranslation(solution: SolutionData, language: Language) {
+  return solution.translations[language]
+}
+
+export function getFeaturedSolutions(): SolutionData[] {
+  return solutionsData.filter(solution => solution.featured)
+}
+
+export function getSolutionCategoryTranslation(categoryId: string, language: Language): string {
+  const category = solutionCategoriesData.find(c => c.id === categoryId)
+  return category ? category[language] : categoryId
 }
 

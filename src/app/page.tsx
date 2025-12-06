@@ -6,6 +6,7 @@ import SimpleFooter from './components/SimpleFooter'
 import Hero from './sections/Hero'
 import TrustedBy from './sections/TrustedBy'
 import Projets from './sections/Projets'
+import Solutions from './sections/Solutions'
 import About from './sections/About'
 import ContactForm from './components/ContactForm'
 import { useAppStore } from '@/lib/store'
@@ -25,6 +26,8 @@ export default function Home() {
       
       <Projets />
       
+      <Solutions />
+      
       <About />
       
       <section id="contact" className="min-h-screen py-32 px-6 lg:px-24 bg-white">
@@ -32,7 +35,7 @@ export default function Home() {
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-sm font-medium text-purple-light uppercase tracking-wider">
-                04
+                05
               </span>
               <div className="w-12 h-px bg-purple-brand" />
               <span className="text-sm font-medium text-purple-brand uppercase tracking-wider">
