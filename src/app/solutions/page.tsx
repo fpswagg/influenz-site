@@ -105,29 +105,24 @@ export default function SolutionsPage() {
                         
                         {/* Content */}
                         <div className="p-6 flex-grow flex flex-col">
-                          <h2 className="text-2xl font-bold mb-3 text-purple-dark group-hover:text-purple-brand transition-colors">
+                          <h2 className="text-xl font-bold mb-3 text-purple-dark group-hover:text-purple-brand transition-colors">
                             {translation.title}
                           </h2>
                           
-                          <p className="text-purple-brand/70 leading-relaxed mb-6 flex-grow">
-                            {translation.shortDescription}
+                          <p className="text-purple-brand/70 leading-relaxed mb-6 flex-grow text-sm line-clamp-4">
+                            {translation.problem}
                           </p>
                           
-                          {/* Features preview */}
+                          {/* Results preview */}
                           <div className="flex flex-wrap gap-2 mb-4">
-                            {translation.features.slice(0, 3).map((feature, idx) => (
+                            {translation.results.slice(0, 2).map((result, idx) => (
                               <span
                                 key={idx}
                                 className="px-3 py-1 bg-purple-brand/5 border border-purple-light/20 rounded-full text-xs text-purple-brand/70"
                               >
-                                {feature}
+                                ✓ {result}
                               </span>
                             ))}
-                            {translation.features.length > 3 && (
-                              <span className="px-3 py-1 text-xs text-purple-light">
-                                +{translation.features.length - 3}
-                              </span>
-                            )}
                           </div>
                           
                           {/* CTA */}

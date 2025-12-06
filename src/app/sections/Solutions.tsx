@@ -22,7 +22,7 @@ export default function Solutions() {
             </span>
             <div className="w-12 h-px bg-purple-brand" />
             <span className="text-sm font-medium text-purple-brand uppercase tracking-wider">
-              {language === 'fr' ? 'Services' : 'Services'}
+              {language === 'fr' ? 'Problématiques' : 'Challenges'}
             </span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-purple-dark">
@@ -58,16 +58,16 @@ export default function Solutions() {
 
                     {/* Content */}
                     <div className="flex-grow">
-                      <h3 className="text-2xl font-bold text-purple-dark group-hover:text-purple-brand transition-colors mb-4">
+                      <h3 className="text-xl font-bold text-purple-dark group-hover:text-purple-brand transition-colors mb-4">
                         {translation.title}
                       </h3>
-                      <p className="text-purple-brand/70 leading-relaxed mb-6">
-                        {translation.shortDescription}
+                      <p className="text-purple-brand/70 leading-relaxed text-sm line-clamp-3">
+                        {translation.problem}
                       </p>
                     </div>
 
                     {/* CTA */}
-                    <div className="flex items-center gap-2 text-purple-brand font-medium mt-auto pt-4 border-t border-purple-light/10">
+                    <div className="flex items-center gap-2 text-purple-brand font-medium mt-6 pt-4 border-t border-purple-light/10">
                       <span>{t.solutions.cta}</span>
                       <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

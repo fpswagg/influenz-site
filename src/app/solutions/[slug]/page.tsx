@@ -69,55 +69,78 @@ export default function SolutionDetailPage() {
                 {getSolutionCategoryTranslation(solution.categoryId, language)}
               </div>
             </div>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-purple-dark">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-purple-dark">
               {translation.title}
             </h1>
-            <p className="text-xl text-purple-brand/80 leading-relaxed">
-              {translation.description}
-            </p>
           </motion.div>
 
-          {/* Features */}
+          {/* Problem */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="mb-16"
+            className="mb-12 p-8 bg-purple-brand/5 rounded-2xl border border-purple-light/20"
           >
-            <h2 className="text-2xl font-bold mb-8 text-purple-dark">{t.solution.features}</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              {translation.features.map((feature, index) => (
+            <h2 className="text-2xl font-bold mb-4 text-purple-dark">{t.solution.problem}</h2>
+            <p className="text-lg text-purple-brand/80 leading-relaxed">
+              {translation.problem}
+            </p>
+          </motion.div>
+
+          {/* Approach */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="mb-12"
+          >
+            <h2 className="text-2xl font-bold mb-4 text-purple-dark">{t.solution.approach}</h2>
+            <p className="text-lg text-purple-brand/80 leading-relaxed">
+              {translation.approach}
+            </p>
+          </motion.div>
+
+          {/* Steps */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
+            className="mb-12"
+          >
+            <h2 className="text-2xl font-bold mb-8 text-purple-dark">{t.solution.steps}</h2>
+            <div className="space-y-4">
+              {translation.steps.map((step, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
-                  className="flex items-start gap-3 p-4 bg-purple-brand/5 rounded-xl border border-purple-light/20"
+                  transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
+                  className="flex items-start gap-4 p-4 bg-white rounded-xl border border-purple-light/20"
                 >
-                  <svg className="w-6 h-6 text-purple-brand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-purple-brand/80">{feature}</span>
+                  <div className="w-8 h-8 rounded-full bg-purple-brand flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-sm">{index + 1}</span>
+                  </div>
+                  <span className="text-purple-brand/80 leading-relaxed pt-1">{step}</span>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Benefits */}
+          {/* Results */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.6 }}
             className="mb-16 p-8 border border-purple-brand/30 rounded-2xl bg-white"
           >
-            <h2 className="text-2xl font-bold mb-8 text-purple-dark">{t.solution.benefits}</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {translation.benefits.map((benefit, index) => (
+            <h2 className="text-2xl font-bold mb-8 text-purple-dark">{t.solution.results}</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {translation.results.map((result, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-purple-brand/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-purple-brand font-bold text-sm">{index + 1}</span>
-                  </div>
-                  <span className="text-purple-brand/80 leading-relaxed">{benefit}</span>
+                  <svg className="w-6 h-6 text-purple-brand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-purple-brand/80 leading-relaxed">{result}</span>
                 </div>
               ))}
             </div>
@@ -127,7 +150,7 @@ export default function SolutionDetailPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.5 }}
+            transition={{ duration: 0.4, delay: 0.7 }}
             className="text-center p-12 bg-purple-brand/5 rounded-2xl border border-purple-light/20"
           >
             <h3 className="text-2xl font-bold mb-4 text-purple-dark">

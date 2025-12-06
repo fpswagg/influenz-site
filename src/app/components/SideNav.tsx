@@ -103,7 +103,7 @@ export default function SideNav({ isVisible }: SideNavProps) {
 
   return (
     <>
-      {/* Desktop Side Navigation - Design épuré avec background */}
+      {/* Desktop Side Navigation - Compact design */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ 
@@ -111,24 +111,24 @@ export default function SideNav({ isVisible }: SideNavProps) {
           x: isVisible ? 0 : -20,
         }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
-        className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block"
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden lg:block"
         style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
       >
-        <nav className="flex flex-col gap-2 bg-white/95 backdrop-blur-sm border border-purple-light/20 rounded-2xl p-3 shadow-lg">
+        <nav className="flex flex-col gap-1 bg-white/95 backdrop-blur-sm border border-purple-light/20 rounded-xl p-2 shadow-lg">
           {sections.map((section) => {
             const isActive = activeSection === section.id
             return (
               <button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
-                className={`group flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 ${
+                className={`group flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 ${
                   isActive 
-                    ? 'bg-purple-brand/10 border border-purple-brand/30' 
-                    : 'border border-transparent hover:bg-purple-brand/5'
+                    ? 'bg-purple-brand/10' 
+                    : 'hover:bg-purple-brand/5'
                 }`}
               >
                 {/* Number */}
-                <span className={`text-xs font-bold w-8 text-left transition-colors duration-200 ${
+                <span className={`text-xs font-bold w-6 text-center transition-colors duration-200 ${
                   isActive 
                     ? 'text-purple-brand' 
                     : 'text-purple-light group-hover:text-purple-brand'
@@ -136,15 +136,8 @@ export default function SideNav({ isVisible }: SideNavProps) {
                   {section.number}
                 </span>
                 
-                {/* Separator bar */}
-                <div className={`w-px h-8 transition-all duration-200 ${
-                  isActive 
-                    ? 'bg-purple-brand shadow-sm shadow-purple-brand/50' 
-                    : 'bg-purple-light/30 group-hover:bg-purple-light'
-                }`} />
-                
                 {/* Label */}
-                <span className={`text-sm font-medium transition-colors duration-200 ${
+                <span className={`text-xs font-medium transition-colors duration-200 whitespace-nowrap ${
                   isActive
                     ? 'text-purple-brand'
                     : 'text-purple-light group-hover:text-purple-brand'
@@ -166,12 +159,12 @@ export default function SideNav({ isVisible }: SideNavProps) {
               <button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
-                className={`flex-1 flex flex-col items-center gap-2 py-3 transition-all active:scale-95 ${
+                className={`flex-1 flex flex-col items-center gap-1 py-2 transition-all active:scale-95 ${
                   isActive ? 'bg-purple-brand/5' : ''
                 }`}
               >
                 {/* Number */}
-                <span className={`text-xs font-bold transition-colors duration-200 ${
+                <span className={`text-[10px] font-bold transition-colors duration-200 ${
                   isActive 
                     ? 'text-purple-brand' 
                     : 'text-purple-light'
@@ -180,7 +173,7 @@ export default function SideNav({ isVisible }: SideNavProps) {
                 </span>
                 
                 {/* Label */}
-                <span className={`text-xs font-medium transition-colors duration-200 ${
+                <span className={`text-[10px] font-medium transition-colors duration-200 ${
                   isActive
                     ? 'text-purple-brand'
                     : 'text-purple-light'
@@ -189,9 +182,9 @@ export default function SideNav({ isVisible }: SideNavProps) {
                 </span>
                 
                 {/* Active indicator en bas */}
-                <div className={`w-8 h-0.5 rounded-full transition-all duration-300 ${
+                <div className={`w-6 h-0.5 rounded-full transition-all duration-300 ${
                   isActive 
-                    ? 'bg-purple-brand shadow-sm shadow-purple-brand/50' 
+                    ? 'bg-purple-brand' 
                     : 'bg-transparent'
                 }`} />
               </button>

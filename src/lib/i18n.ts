@@ -117,8 +117,10 @@ export interface Translations {
   solution: {
     back: string
     backSimple: string
-    features: string
-    benefits: string
+    problem: string
+    approach: string
+    steps: string
+    results: string
     contactUs: string
     interested: string
     notFound: string
@@ -251,8 +253,8 @@ export const translations: Record<Language, Translations> = {
     },
     solutions: {
       title: 'Nos solutions',
-      subtitle: 'Des services sur mesure pour répondre à tous vos besoins en communication',
-      cta: 'En savoir plus',
+      subtitle: 'Des problématiques concrètes que nous avons résolues pour nos clients',
+      cta: 'Voir la solution',
       viewAll: 'Voir toutes nos solutions',
     },
     solutionsPage: {
@@ -265,10 +267,12 @@ export const translations: Record<Language, Translations> = {
     solution: {
       back: 'Retour aux solutions',
       backSimple: 'Retour',
-      features: 'Ce que nous proposons',
-      benefits: 'Les avantages',
+      problem: 'La problématique',
+      approach: 'Notre approche',
+      steps: 'Les étapes clés',
+      results: 'Les résultats',
       contactUs: 'Nous contacter',
-      interested: 'Cette solution vous intéresse ?',
+      interested: 'Vous avez cette problématique ?',
       notFound: 'Solution non trouvée',
       backToSolutions: 'Retour aux solutions',
     },
@@ -397,8 +401,8 @@ export const translations: Record<Language, Translations> = {
     },
     solutions: {
       title: 'Our Solutions',
-      subtitle: 'Custom services to meet all your communication needs',
-      cta: 'Learn more',
+      subtitle: 'Concrete problems we have solved for our clients',
+      cta: 'View solution',
       viewAll: 'View all our solutions',
     },
     solutionsPage: {
@@ -411,10 +415,12 @@ export const translations: Record<Language, Translations> = {
     solution: {
       back: 'Back to solutions',
       backSimple: 'Back',
-      features: 'What we offer',
-      benefits: 'The benefits',
+      problem: 'The problem',
+      approach: 'Our approach',
+      steps: 'Key steps',
+      results: 'The results',
       contactUs: 'Contact us',
-      interested: 'Interested in this solution?',
+      interested: 'Facing this problem?',
       notFound: 'Solution not found',
       backToSolutions: 'Back to solutions',
     },
