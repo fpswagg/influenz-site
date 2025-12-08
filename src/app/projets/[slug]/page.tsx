@@ -6,9 +6,10 @@ import Image from 'next/image'
 import { useParams, useSearchParams } from 'next/navigation'
 import { useAppStore } from '@/lib/store'
 import { translations } from '@/lib/i18n'
-import { getProjectBySlug, getProjectTranslation, getCategoryTranslation, getProjectServices } from '@/lib/data'
+import { getProjectBySlug, getProjectTranslation, getCategoryTranslation, getProjectServices, isVideoMedia } from '@/lib/data'
 import Header from '../../components/Header'
 import SimpleFooter from '../../components/SimpleFooter'
+import VideoPlayer from '../../components/VideoPlayer'
 
 export default function ProjectDetailPage() {
   const params = useParams()
@@ -75,27 +76,61 @@ export default function ProjectDetailPage() {
             </p>
           </motion.div>
 
-          {/* Hero Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="aspect-video bg-purple-brand/5 rounded-2xl border border-purple-light/20 flex items-center justify-center mb-16 shadow-sm overflow-hidden relative"
-          >
-            {project.image ? (
-              <Image
-                src={project.image}
-                alt={translation.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 896px"
-              />
-            ) : (
+          {/* Media Gallery */}
+          {project.media && project.media.length > 0 ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="mb-16"
+            >
+              <div className={`grid gap-6 ${
+                project.media.length === 1 
+                  ? 'grid-cols-1' 
+                  : project.media.length === 2 
+                  ? 'grid-cols-1 md:grid-cols-2' 
+                  : 'grid-cols-1 md:grid-cols-2'
+              }`}>
+                {project.media.map((mediaItem, index) => {
+                  const isVideo = isVideoMedia(mediaItem);
+                  
+                  return (
+                    <div
+                      key={index}
+                      className="group aspect-video bg-purple-brand/5 rounded-2xl border border-purple-light/20 overflow-hidden relative shadow-sm hover:shadow-lg hover:shadow-purple-brand/10 transition-all duration-300 select-none"
+                      style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+                      onDragStart={(e) => e.preventDefault()}
+                    >
+                      {isVideo ? (
+                        <div className="absolute inset-0 select-none" style={{ userSelect: 'none', WebkitUserSelect: 'none' }}>
+                          <VideoPlayer src={mediaItem} className="rounded-2xl" />
+                        </div>
+                      ) : (
+                        <Image
+                          src={mediaItem}
+                          alt={`${translation.title} - ${index + 1}`}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 768px) 100vw, 448px"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="aspect-video bg-purple-brand/5 rounded-2xl border border-purple-light/20 flex items-center justify-center mb-16 shadow-sm"
+            >
               <div className="text-8xl font-bold text-purple-brand/30">
                 {getCategoryTranslation(project.categoryId, language).charAt(0)}
               </div>
-            )}
-          </motion.div>
+            </motion.div>
+          )}
 
           {/* Project Details */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">

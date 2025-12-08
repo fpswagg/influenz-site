@@ -6,9 +6,10 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { useAppStore } from '@/lib/store'
 import { translations } from '@/lib/i18n'
-import { projectsData, getProjectTranslation, categoriesData, getProjectCategory, getCategoryTranslation, getProjectServices } from '@/lib/data'
+import { projectsData, getProjectTranslation, categoriesData, getProjectCategory, getCategoryTranslation, getProjectServices, isVideoMedia } from '@/lib/data'
 import Header from '../components/Header'
 import SimpleFooter from '../components/SimpleFooter'
+import VideoPlayer from '../components/VideoPlayer'
 
 export default function ProjetsPage() {
   const language = useAppStore((state) => state.language)
@@ -96,16 +97,28 @@ export default function ProjetsPage() {
                     className="group block"
                   >
                     <div className="border border-purple-light/20 rounded-2xl overflow-hidden hover:border-purple-brand/50 transition-colors bg-white shadow-sm hover:shadow-lg hover:shadow-purple-brand/10">
-                      {/* Image */}
-                      <div className="aspect-video bg-purple-brand/5 flex items-center justify-center border-b border-purple-light/20 relative overflow-hidden">
-                        {project.image ? (
-                          <Image
-                            src={project.image}
-                            alt={translation.title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                          />
+                      {/* Media */}
+                      <div 
+                        className="aspect-video bg-purple-brand/5 flex items-center justify-center border-b border-purple-light/20 relative overflow-hidden rounded-t-2xl select-none"
+                        style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+                        onDragStart={(e) => e.preventDefault()}
+                      >
+                        {project.media && project.media[0] ? (
+                          isVideoMedia(project.media[0]) ? (
+                            <VideoPlayer 
+                              src={project.media[0]} 
+                              className="w-full h-full rounded-t-2xl" 
+                              muted={true}
+                            />
+                          ) : (
+                            <Image
+                              src={project.media[0]}
+                              alt={translation.title}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-2xl"
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                          )
                         ) : (
                           <div className="text-6xl font-bold text-purple-brand/30">
                             {getCategoryTranslation(project.categoryId, language).charAt(0)}

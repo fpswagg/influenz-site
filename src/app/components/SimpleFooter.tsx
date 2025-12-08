@@ -40,12 +40,12 @@ export default function SimpleFooter() {
                 {env.contact.email}
               </a>
               <div className="space-y-1">
-                <a 
-                  href={`tel:${env.contact.phone.replace(/\s/g, '')}`}
+              <a 
+                href={`tel:${env.contact.phone.replace(/\s/g, '')}`}
                   className="block hover:text-purple-dark transition-colors"
-                >
-                  {env.contact.phone}
-                </a>
+              >
+                {env.contact.phone}
+              </a>
                 <a 
                   href={`tel:${env.contact.phoneSecondary.replace(/\s/g, '')}`}
                   className="block hover:text-purple-dark transition-colors"

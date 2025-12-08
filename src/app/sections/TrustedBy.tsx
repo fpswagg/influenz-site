@@ -53,7 +53,7 @@ export default function TrustedBy() {
                 ) : (
                   <div className="w-[80px] h-[80px] flex items-center justify-center mb-2">
                     <span className="text-3xl font-bold text-purple-light group-hover:text-purple-brand transition-colors duration-300">
-                      {client.logo}
+                    {client.logo}
                     </span>
                   </div>
                 )}

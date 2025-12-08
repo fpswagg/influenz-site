@@ -16,8 +16,7 @@ export interface ProjectData {
   year: string
   client: string
   serviceIds: string[] // IDs des services
-  image?: string // Optional main image
-  images?: string[] // Optional gallery images
+  media?: string[] // Optional media array (images and videos)
   link?: ProjectLink // Optional external link (e.g., to the live project)
   translations: {
     [key in Language]: {
@@ -79,8 +78,7 @@ export const projectsData: ProjectData[] = [
     year: '2024',
     client: 'Marque de luxe internationale',
     serviceIds: ['digital-strategy', 'social-media', 'content-marketing', 'influence'],
-    image: '/images/projects/project1.jpg',
-    images: ['/images/projects/project1.jpg', '/images/projects/project1-2.jpg', '/images/projects/project1-3.jpg'],
+    media: ['https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', '/images/projects/project1.jpg', '/images/projects/project1-2.jpg', '/images/projects/project1-3.jpg'],
     translations: {
       fr: {
         title: 'Stratégie Digitale Premium',
@@ -119,8 +117,7 @@ export const projectsData: ProjectData[] = [
     year: '2023',
     client: 'Entreprise technologique Fortune 500',
     serviceIds: ['events', 'press-relations', 'production', 'digital'],
-    image: '/images/projects/project2.jpg',
-    images: ['/images/projects/project2.jpg', '/images/projects/project2-2.jpg', '/images/projects/project2-3.jpg'],
+    media: ['/images/projects/project2.jpg', '/images/projects/project2-2.jpg', '/images/projects/project2-3.jpg', 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'],
     translations: {
       fr: {
         title: 'Événement Corporate International',
@@ -159,8 +156,7 @@ export const projectsData: ProjectData[] = [
     year: '2024',
     client: 'Startup IA / Machine Learning',
     serviceIds: ['press-relations', 'storytelling', 'media-training', 'events'],
-    image: '/images/projects/project3.jpg',
-    images: ['/images/projects/project3.jpg', '/images/projects/project3-2.jpg', '/images/projects/project3-3.jpg'],
+    media: ['/images/projects/project3.jpg', '/images/projects/project3-2.jpg', '/images/projects/project3-3.jpg'],
     translations: {
       fr: {
         title: 'Relations Presse Tech',
@@ -199,8 +195,7 @@ export const projectsData: ProjectData[] = [
     year: '2023-2024',
     client: 'Entreprise industrielle',
     serviceIds: ['strategic-consulting', 'branding', 'training', 'change-management'],
-    image: '/images/projects/project4.jpg',
-    images: ['/images/projects/project4.jpg', '/images/projects/project4-2.jpg', '/images/projects/project4-3.jpg'],
+    media: ['/images/projects/project4.jpg', '/images/projects/project4-2.jpg', '/images/projects/project4-3.jpg'],
     translations: {
       fr: {
         title: 'Transformation Stratégique',
@@ -615,11 +610,39 @@ export const clientsData: Client[] = [
   { id: '7', name: 'Press Club', logo: 'PC', image: '/images/clients/press-club.png' },
   { id: '8', name: 'SYNAFOC', logo: 'SY', image: '/images/clients/synafoc.png' },
   { id: '9', name: 'UPF', logo: 'UP', image: '/images/clients/upf.png' },
+  { id: '10', name: 'AACB', logo: 'AA', image: '/images/clients/aacb.png' },
 ]
 
 // ============================================
 // HELPER FUNCTIONS
 // ============================================
+
+export function isVideoMedia(mediaUrl: string): boolean {
+  // Check file extension for local video files
+  if (mediaUrl.match(/\.(mp4|webm|ogg|mov|avi|mkv|m4v)$/i)) {
+    return true;
+  }
+  // Check for video hosting platforms
+  if (mediaUrl.includes('youtube.com') || mediaUrl.includes('youtu.be')) {
+    return true;
+  }
+  if (mediaUrl.includes('vimeo.com')) {
+    return true;
+  }
+  return false;
+}
+
+export function getVideoType(mediaUrl: string): 'youtube' | 'vimeo' | 'local' | null {
+  if (!isVideoMedia(mediaUrl)) return null;
+  
+  if (mediaUrl.includes('youtube.com') || mediaUrl.includes('youtu.be')) {
+    return 'youtube';
+  }
+  if (mediaUrl.includes('vimeo.com')) {
+    return 'vimeo';
+  }
+  return 'local';
+}
 
 export function getProjectBySlug(slug: string): ProjectData | undefined {
   return projectsData.find(project => project.slug === slug)
