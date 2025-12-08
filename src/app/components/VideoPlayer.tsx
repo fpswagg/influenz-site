@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react'
+
 interface VideoPlayerProps {
   src: string
   className?: string
@@ -71,7 +73,11 @@ export default function VideoPlayer({
       });
       
       return (
-        <div className={`w-full h-full select-none ${className}`} style={{ userSelect: 'none', WebkitUserSelect: 'none' }}>
+        <div 
+          className={`w-full h-full select-none ${className}`} 
+          style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+          onDragStart={(e: React.DragEvent) => e.preventDefault()}
+        >
           <iframe
             src={`https://www.youtube.com/embed/${videoId}?${embedParams.toString()}`}
             className="w-full h-full pointer-events-auto"
@@ -100,7 +106,11 @@ export default function VideoPlayer({
       });
       
       return (
-        <div className={`w-full h-full select-none ${className}`} style={{ userSelect: 'none', WebkitUserSelect: 'none' }}>
+        <div 
+          className={`w-full h-full select-none ${className}`} 
+          style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+          onDragStart={(e: React.DragEvent) => e.preventDefault()}
+        >
           <iframe
             src={`https://player.vimeo.com/video/${videoId}?${embedParams.toString()}`}
             className="w-full h-full pointer-events-auto"
@@ -120,13 +130,13 @@ export default function VideoPlayer({
     <div 
       className={`w-full h-full select-none ${className}`} 
       style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none' }}
-      onDragStart={(e) => e.preventDefault()}
-      onSelectStart={(e) => e.preventDefault()}
+      onDragStart={(e: React.DragEvent) => e.preventDefault()}
     >
       <video
         src={src}
         controls
-        className="w-full h-full object-cover pointer-events-auto"
+        className="w-full h-full object-cover pointer-events-auto select-none"
+        style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
         playsInline
         autoPlay={autoplay}
         muted={muted}
@@ -134,11 +144,7 @@ export default function VideoPlayer({
         preload="metadata"
         poster=""
         draggable={false}
-        onDragStart={(e) => e.preventDefault()}
-        onContextMenu={(e) => {
-          // Allow right-click for video controls but prevent text selection
-          e.stopPropagation();
-        }}
+        onDragStart={(e: React.DragEvent) => e.preventDefault()}
       >
         <source src={src} type={`video/${src.split('.').pop()?.toLowerCase() || 'mp4'}`} />
         Your browser does not support the video tag.

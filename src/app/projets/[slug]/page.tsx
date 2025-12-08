@@ -99,7 +99,7 @@ export default function ProjectDetailPage() {
                       key={index}
                       className="group aspect-video bg-purple-brand/5 rounded-2xl border border-purple-light/20 overflow-hidden relative shadow-sm hover:shadow-lg hover:shadow-purple-brand/10 transition-all duration-300 select-none"
                       style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
-                      onDragStart={(e) => e.preventDefault()}
+                      onDragStart={(e: React.DragEvent) => e.preventDefault()}
                     >
                       {isVideo ? (
                         <div className="absolute inset-0 select-none" style={{ userSelect: 'none', WebkitUserSelect: 'none' }}>

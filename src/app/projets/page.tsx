@@ -101,7 +101,7 @@ export default function ProjetsPage() {
                       <div 
                         className="aspect-video bg-purple-brand/5 flex items-center justify-center border-b border-purple-light/20 relative overflow-hidden rounded-t-2xl select-none"
                         style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
-                        onDragStart={(e) => e.preventDefault()}
+                        onDragStart={(e: React.DragEvent) => e.preventDefault()}
                       >
                         {project.media && project.media[0] ? (
                           isVideoMedia(project.media[0]) ? (
