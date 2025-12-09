@@ -78,7 +78,7 @@ export const projectsData: ProjectData[] = [
     year: '2024',
     client: 'Marque de luxe internationale',
     serviceIds: ['digital-strategy', 'social-media', 'content-marketing', 'influence'],
-    media: ['https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', '/images/projects/project1.jpg', '/images/projects/project1-2.jpg', '/images/projects/project1-3.jpg'],
+    media: ['/images/projects/project1.jpg', 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', '/images/projects/project1-3.jpg'],
     translations: {
       fr: {
         title: 'Stratégie Digitale Premium',
@@ -117,7 +117,7 @@ export const projectsData: ProjectData[] = [
     year: '2023',
     client: 'Entreprise technologique Fortune 500',
     serviceIds: ['events', 'press-relations', 'production', 'digital'],
-    media: ['/images/projects/project2.jpg', '/images/projects/project2-2.jpg', '/images/projects/project2-3.jpg', 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'],
+    media: ['/images/projects/project2.jpg', '/images/projects/project2-2.jpg', 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'],
     translations: {
       fr: {
         title: 'Événement Corporate International',
