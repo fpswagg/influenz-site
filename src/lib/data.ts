@@ -36,6 +36,10 @@ export interface Client {
   name: string
   logo: string // Fallback letters if image is not provided
   image?: string // Optional image path (e.g., '/images/clients/microsoft.png')
+  description: {
+    fr: string
+    en: string
+  }
 }
 
 export interface SolutionLink {
@@ -601,16 +605,116 @@ export const solutionsData: SolutionData[] = [
 // ============================================
 
 export const clientsData: Client[] = [
-  { id: '1', name: 'BEAC', logo: 'BE', image: '/images/clients/beac.png' },
-  { id: '2', name: 'EcoMatin', logo: 'EM', image: '/images/clients/ecomatin.png' },
-  { id: '3', name: 'CCAA', logo: 'CC', image: '/images/clients/ccaa.png' },
-  { id: '4', name: 'FIFPRO', logo: 'FF', image: '/images/clients/fifpro.png' },
-  { id: '5', name: 'Ippon', logo: 'IP', image: '/images/clients/ippon.png' },
-  { id: '6', name: 'Nexar', logo: 'NX', image: '/images/clients/nexar.png' },
-  { id: '7', name: 'Press Club', logo: 'PC', image: '/images/clients/press-club.png' },
-  { id: '8', name: 'SYNAFOC', logo: 'SY', image: '/images/clients/synafoc.png' },
-  { id: '9', name: 'UPF', logo: 'UP', image: '/images/clients/upf.png' },
-  { id: '10', name: 'AACB', logo: 'AA', image: '/images/clients/aacb.png' },
+  {
+    id: '1',
+    name: 'BEAC',
+    logo: 'BE',
+    image: '/images/clients/beac.png',
+    description: {
+      fr: "Banque des États de l’Afrique Centrale — banque centrale de la zone CEMAC, chargée de la politique monétaire et de l’émission de la monnaie.",
+      en: "Banque des États de l’Afrique Centrale — central bank serving the CEMAC region, responsible for monetary policy and currency issuance.",
+    },
+  },
+  {
+    id: '2',
+    name: 'EcoMatin',
+    logo: 'EM',
+    image: '/images/clients/ecomatin.png',
+    description: {
+      fr: 'Média économique camerounais proposant de l’information et de l’analyse sur le Cameroun et l’Afrique centrale, en formats papier et digital.',
+      en: 'Cameroonian business and economic news outlet providing reporting and analysis on Cameroon and Central Africa across print and digital formats.',
+    },
+  },
+  {
+    id: '3',
+    name: 'CCAA',
+    logo: 'CC',
+    image: '/images/clients/ccaa.png',
+    description: {
+      fr: "Cameroon Civil Aviation Authority — autorité publique chargée de la réglementation, de la supervision, de la sûreté et de la sécurité de l’aviation civile au Cameroun.",
+      en: 'Cameroon Civil Aviation Authority — public authority in charge of civil aviation regulation, oversight, safety, and security in Cameroon.',
+    },
+  },
+  {
+    id: '4',
+    name: 'FIFPRO',
+    logo: 'FF',
+    image: '/images/clients/fifpro.png',
+    description: {
+      fr: "Syndicat mondial des footballeurs professionnels, qui représente les joueurs via des unions nationales et défend leurs droits et conditions de travail dans le monde.",
+      en: 'Global union for professional footballers, representing players through national unions and advocating for their rights and working conditions worldwide.',
+    },
+  },
+  {
+    id: '5',
+    name: 'Ippon',
+    logo: 'IP',
+    image: '/images/clients/ippon.png',
+    description: {
+      fr: 'Cabinet international de conseil tech accompagnant la transformation digitale (software engineering, cloud, data et architectures modernes).',
+      en: 'International technology consulting firm helping organizations with digital transformation, software engineering, cloud, data, and modern architectures.',
+    },
+  },
+  {
+    id: '6',
+    name: 'Nexar',
+    logo: 'NX',
+    image: '/images/clients/nexar.png',
+    description: {
+      fr: "Plateforme de dashcam et application connectée dopées à l’IA, centrées sur la sécurité routière, la détection d’incidents et la preuve vidéo pour conducteurs et flottes.",
+      en: 'AI-powered dashcam platform and connected driving app focused on road safety, incident detection, and video evidence for drivers and fleets.',
+    },
+  },
+  {
+    id: '7',
+    name: 'Press Club',
+    logo: 'PC',
+    image: '/images/clients/press-club.png',
+    description: {
+      fr: "Press Club de France — association et réseau réunissant journalistes et professionnels de la communication, avec conférences, débats et événements médias.",
+      en: 'Press Club de France — professional association and networking hub for journalists and communications leaders, hosting conferences, debates, and media-focused events.',
+    },
+  },
+  {
+    id: '8',
+    name: 'SYNAFOC',
+    logo: 'SY',
+    image: '/images/clients/synafoc.png',
+    description: {
+      fr: 'Syndicat National des Footballeurs Camerounais — union nationale qui représente les footballeurs camerounais et défend leurs droits.',
+      en: 'Syndicat National des Footballeurs Camerounais — national union representing Cameroonian footballers and defending players’ rights.',
+    },
+  },
+  {
+    id: '9',
+    name: 'UPF',
+    logo: 'UP',
+    image: '/images/clients/upf.png',
+    description: {
+      fr: "Union internationale de la Presse francophone — ONG qui fédère des journalistes francophones et promeut la liberté de la presse et la collaboration professionnelle.",
+      en: 'Union internationale de la Presse francophone — international NGO uniting Francophone journalists and promoting press freedom and professional collaboration.',
+    },
+  },
+  {
+    id: '10',
+    name: 'AACB',
+    logo: 'AA',
+    image: '/images/clients/aacb.png',
+    description: {
+      fr: "Association of African Central Banks — association panafricaine réunissant les banques centrales pour renforcer la coopération sur le continent.",
+      en: 'Association of African Central Banks — pan-African association bringing together central banks to support cooperation across the continent.',
+    },
+  },
+  {
+    id: '11',
+    name: 'APN',
+    logo: 'AP',
+    image: '/images/clients/apn.png',
+    description: {
+      fr: "Autorité Portuaire Nationale (Cameroun) — organisme public chargé de mettre en œuvre la politique portuaire nationale et de réguler les activités portuaires.",
+      en: 'Autorité Portuaire Nationale (Cameroon) — public authority responsible for implementing national port policy and regulating port activities.',
+    },
+  },
 ]
 
 // ============================================
