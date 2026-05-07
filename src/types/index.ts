@@ -11,6 +11,11 @@ export interface Client {
   id: string
   name: string
   logo: string
+  image?: string
+  description: {
+    fr: string
+    en: string
+  }
 }
 
 export interface Value {
