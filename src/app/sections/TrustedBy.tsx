@@ -1,15 +1,16 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import Image from 'next/image'
+import MediaView from '@/components/site/MediaView'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useAppStore } from '@/lib/store'
-import { translations } from '@/lib/i18n'
-import { clientsData } from '@/lib/data'
+import { useCopy, useClients, useExtras } from '@/lib/content/site-context'
 
 export default function TrustedBy() {
   const language = useAppStore((state) => state.language)
-  const t = translations[language]
+  const t = useCopy()
+  const extras = useExtras()
+  const clientsData = useClients()
   const [hoveredClientId, setHoveredClientId] = useState<string | null>(null)
   const [selectedClientId, setSelectedClientId] = useState<string | null>(null)
   const infoPanelRef = useRef<HTMLDivElement | null>(null)
@@ -54,21 +55,13 @@ export default function TrustedBy() {
     }
   }, [selectedClientId])
 
-  const infoMicrocopy = language === 'fr'
-    ? {
-        hoverHint: 'Survolez ou touchez un partenaire pour afficher ses informations.',
-        preview: 'Aperçu rapide',
-        pinned: 'Fiche épinglée',
-        action: 'Cliquez sur un autre partenaire pour changer.',
-        close: 'Fermer',
-      }
-    : {
-        hoverHint: 'Hover or tap a partner to reveal details.',
-        preview: 'Quick preview',
-        pinned: 'Pinned card',
-        action: 'Click another partner to switch.',
-        close: 'Close',
-      }
+  const infoMicrocopy = {
+    hoverHint: extras.trustedByHoverHint[language],
+    preview: extras.trustedByPreview[language],
+    pinned: extras.trustedByPinned[language],
+    action: extras.trustedByAction[language],
+    close: extras.trustedByClose[language],
+  }
 
   return (
     <section id="trusted-by" className="py-20 px-6 lg:px-24 border-y border-purple-light/20 bg-white">
@@ -124,13 +117,7 @@ export default function TrustedBy() {
                   <div className={`relative w-[80px] h-[80px] mb-2 transition-opacity duration-300 flex items-center justify-center ${
                     activeClientId === client.id ? 'opacity-100' : 'opacity-70 group-hover:opacity-100'
                   }`}>
-                    <Image
-                      src={client.image}
-                      alt={client.name}
-                      fill
-                      className="object-contain"
-                      sizes="80px"
-                    />
+                    <MediaView src={client.image} alt={client.name} mode="contain" sizes="80px" />
                   </div>
                 ) : (
                   <div className="w-[80px] h-[80px] flex items-center justify-center mb-2">

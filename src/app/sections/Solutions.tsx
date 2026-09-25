@@ -3,13 +3,15 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useAppStore } from '@/lib/store'
-import { translations } from '@/lib/i18n'
-import { getFeaturedSolutions, getSolutionTranslation, getSolutionCategoryTranslation } from '@/lib/data'
+import { sectionIndexLabel, useCopy, useSolutions, useSolutionCategories, getLabel, useHomeSection } from '@/lib/content/site-context'
+import { getFeaturedSolutions, getSolutionTranslation } from '@/lib/content/helpers'
 
 export default function Solutions() {
   const language = useAppStore((state) => state.language)
-  const t = translations[language]
-  const featuredSolutions = getFeaturedSolutions()
+  const t = useCopy()
+  const featuredSolutions = getFeaturedSolutions(useSolutions())
+  const solutionCategories = useSolutionCategories()
+  const section = useHomeSection('solutions')
 
   return (
     <section id="solutions" className="min-h-screen py-32 px-6 lg:px-24 bg-purple-brand/5">
@@ -18,11 +20,11 @@ export default function Solutions() {
         <div className="mb-20">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-sm font-medium text-purple-light uppercase tracking-wider">
-              03
+              {sectionIndexLabel(section?.sortOrder || 3)}
             </span>
             <div className="w-12 h-px bg-purple-brand" />
             <span className="text-sm font-medium text-purple-brand uppercase tracking-wider">
-              {language === 'fr' ? 'Problématiques' : 'Challenges'}
+                {section?.eyebrow[language] || t.solutions.title}
             </span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-purple-dark">
@@ -52,7 +54,7 @@ export default function Solutions() {
                     <div className="flex items-start justify-between mb-6">
                       <span className="text-4xl">{solution.icon}</span>
                       <span className="text-xs font-medium text-purple-light uppercase tracking-wider">
-                        {getSolutionCategoryTranslation(solution.categoryId, language)}
+                        {getLabel(solutionCategories, solution.categoryId, language)}
                       </span>
                     </div>
 

@@ -3,12 +3,12 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useAppStore } from '@/lib/store'
-import { translations } from '@/lib/i18n'
+import { useCopy } from '@/lib/content/site-context'
 import { submitContactForm } from '../actions/contact'
 
 export default function ContactForm() {
   const { language } = useAppStore()
-  const t = translations[language]
+  const t = useCopy()
   const [formData, setFormData] = useState({
     name: '',
     enterprise: '',

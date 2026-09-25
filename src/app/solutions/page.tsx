@@ -2,17 +2,19 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
+import MediaView from '@/components/site/MediaView'
 import { useState } from 'react'
 import { useAppStore } from '@/lib/store'
-import { translations } from '@/lib/i18n'
-import { solutionsData, solutionCategoriesData, getSolutionTranslation, getSolutionCategoryTranslation } from '@/lib/data'
+import { useCopy, useSolutions, useSolutionCategories, getLabel } from '@/lib/content/site-context'
+import { getSolutionTranslation } from '@/lib/content/helpers'
 import Header from '../components/Header'
 import SimpleFooter from '../components/SimpleFooter'
 
 export default function SolutionsPage() {
   const language = useAppStore((state) => state.language)
-  const t = translations[language]
+  const t = useCopy()
+  const solutionsData = useSolutions()
+  const solutionCategoriesData = useSolutionCategories()
   const [activeFilter, setActiveFilter] = useState('all')
 
   // Filter solutions based on active filter
@@ -99,16 +101,16 @@ export default function SolutionsPage() {
                         {/* Header with icon or image */}
                         {solution.image ? (
                           <div className="aspect-video relative overflow-hidden border-b border-purple-light/20">
-                            <Image
+                            <MediaView
                               src={solution.image}
                               alt={translation.title}
-                              fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                              mode="cover"
+                              className="group-hover:scale-105 transition-transform duration-300"
                               sizes="(max-width: 768px) 100vw, 33vw"
                             />
                             <div className="absolute top-3 right-3">
                               <span className="px-2 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium text-purple-brand uppercase tracking-wider rounded">
-                                {getSolutionCategoryTranslation(solution.categoryId, language)}
+                                {getLabel(solutionCategoriesData, solution.categoryId, language)}
                               </span>
                             </div>
                             <div className="absolute bottom-3 left-3">
@@ -119,7 +121,7 @@ export default function SolutionsPage() {
                           <div className="p-6 bg-purple-brand/5 border-b border-purple-light/20 flex items-center justify-between">
                             <span className="text-5xl">{solution.icon}</span>
                             <span className="text-xs font-medium text-purple-light uppercase tracking-wider">
-                              {getSolutionCategoryTranslation(solution.categoryId, language)}
+                              {getLabel(solutionCategoriesData, solution.categoryId, language)}
                             </span>
                           </div>
                         )}

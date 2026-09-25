@@ -1,0 +1,180 @@
+{
+  "createdAt": "2026-09-25T12:42:29.433Z",
+  "changes": [
+    {
+      "field": "projectMedia.url",
+      "id": "cmthgm3un0040kau4a2mfhwk3",
+      "label": "projet strategie-digitale-premium",
+      "url": "/images/projects/project1.jpg",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/projects/project1.jpg"
+    },
+    {
+      "field": "projectMedia.url",
+      "id": "cmthgm3un0042kau40feqgfpp",
+      "label": "projet strategie-digitale-premium",
+      "url": "/images/projects/project1-3.jpg",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/projects/project1-3.jpg"
+    },
+    {
+      "field": "projectMedia.url",
+      "id": "cmthgm7480047kau4r85ie0d1",
+      "label": "projet evenement-corporate-international",
+      "url": "/images/projects/project2.jpg",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/projects/project2.jpg"
+    },
+    {
+      "field": "projectMedia.url",
+      "id": "cmthgm7480048kau43yahh0z1",
+      "label": "projet evenement-corporate-international",
+      "url": "/images/projects/project2-2.jpg",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/projects/project2-2.jpg"
+    },
+    {
+      "field": "projectMedia.url",
+      "id": "cmthgm9i6004ekau4ibs8rqng",
+      "label": "projet relations-presse-tech",
+      "url": "/images/projects/project3.jpg",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/projects/project3.jpg"
+    },
+    {
+      "field": "projectMedia.url",
+      "id": "cmthgm9i6004fkau4byr8urzw",
+      "label": "projet relations-presse-tech",
+      "url": "/images/projects/project3-2.jpg",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/projects/project3-2.jpg"
+    },
+    {
+      "field": "projectMedia.url",
+      "id": "cmthgm9i6004gkau4n0z9j4gb",
+      "label": "projet relations-presse-tech",
+      "url": "/images/projects/project3-3.jpg",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/projects/project3-3.jpg"
+    },
+    {
+      "field": "projectMedia.url",
+      "id": "cmthgmbq6004lkau4znhesf53",
+      "label": "projet transformation-strategique",
+      "url": "/images/projects/project4.jpg",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/projects/project4.jpg"
+    },
+    {
+      "field": "projectMedia.url",
+      "id": "cmthgmbq6004mkau4moxvxeef",
+      "label": "projet transformation-strategique",
+      "url": "/images/projects/project4-2.jpg",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/projects/project4-2.jpg"
+    },
+    {
+      "field": "projectMedia.url",
+      "id": "cmthgmbq6004nkau4ifikmoy9",
+      "label": "projet transformation-strategique",
+      "url": "/images/projects/project4-3.jpg",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/projects/project4-3.jpg"
+    },
+    {
+      "field": "solutionMedia.url",
+      "id": "cmthgme3u004skau4nb99a7hn",
+      "label": "solution nson-ayan (galerie)",
+      "url": "/images/solutions/nson-ayan/01.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/solutions/nson-ayan/01.png"
+    },
+    {
+      "field": "solution.coverUrl",
+      "id": "cmthgme3t004pkau4qf7soste",
+      "label": "solution nson-ayan (couverture)",
+      "url": "/images/solutions/nson-ayan/01.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/solutions/nson-ayan/01.png"
+    },
+    {
+      "field": "solutionMedia.url",
+      "id": "cmthgme3u004tkau4v19fu5hb",
+      "label": "solution nson-ayan (galerie)",
+      "url": "/images/solutions/nson-ayan/02.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/solutions/nson-ayan/02.png"
+    },
+    {
+      "field": "client.imageUrl",
+      "id": "cmthgm0xh003lkau4z3k0sx2k",
+      "label": "partenaire BEAC",
+      "url": "/images/clients/beac.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/clients/beac.png"
+    },
+    {
+      "field": "client.imageUrl",
+      "id": "cmthgm1dm003mkau40xfprwwy",
+      "label": "partenaire EcoMatin",
+      "url": "/images/clients/ecomatin.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/clients/ecomatin.png"
+    },
+    {
+      "field": "client.imageUrl",
+      "id": "cmthgm1l4003nkau444e59y50",
+      "label": "partenaire CCAA",
+      "url": "/images/clients/ccaa.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/clients/ccaa.png"
+    },
+    {
+      "field": "client.imageUrl",
+      "id": "cmthgm1sp003okau470j03skf",
+      "label": "partenaire FIFPRO",
+      "url": "/images/clients/fifpro.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/clients/fifpro.png"
+    },
+    {
+      "field": "client.imageUrl",
+      "id": "cmthgm27w003pkau4cu8tqywe",
+      "label": "partenaire Ippon",
+      "url": "/images/clients/ippon.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/clients/ippon.png"
+    },
+    {
+      "field": "client.imageUrl",
+      "id": "cmthgm2h8003qkau45rpdll2x",
+      "label": "partenaire Nexar",
+      "url": "/images/clients/nexar.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/clients/nexar.png"
+    },
+    {
+      "field": "client.imageUrl",
+      "id": "cmthgm2p8003rkau4c45sb2im",
+      "label": "partenaire Press Club",
+      "url": "/images/clients/press-club.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/clients/press-club.png"
+    },
+    {
+      "field": "client.imageUrl",
+      "id": "cmthgm2xd003skau4v33c49jy",
+      "label": "partenaire SYNAFOC",
+      "url": "/images/clients/synafoc.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/clients/synafoc.png"
+    },
+    {
+      "field": "client.imageUrl",
+      "id": "cmthgm37b003tkau4q7wd89an",
+      "label": "partenaire UPF",
+      "url": "/images/clients/upf.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/clients/upf.png"
+    },
+    {
+      "field": "client.imageUrl",
+      "id": "cmthgm3f6003ukau4n8jdgfyz",
+      "label": "partenaire AACB",
+      "url": "/images/clients/aacb.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/clients/aacb.png"
+    },
+    {
+      "field": "client.imageUrl",
+      "id": "cmthgm3mt003vkau4ehvtzmpo",
+      "label": "partenaire APN",
+      "url": "/images/clients/apn.png",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/clients/apn.png"
+    },
+    {
+      "field": "siteConfig.heroBannerUrl",
+      "id": "site",
+      "label": "bannière d’accueil",
+      "url": "/images/banner.jpg",
+      "to": "https://sastorage.fpswagg.site/files/influenz-site/media/images/banner.jpg"
+    }
+  ]
+}

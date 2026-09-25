@@ -2,11 +2,11 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
+import MediaView, { isVideoSource } from '@/components/site/MediaView'
 import { useParams, useSearchParams } from 'next/navigation'
 import { useAppStore } from '@/lib/store'
-import { translations } from '@/lib/i18n'
-import { getSolutionBySlug, getSolutionTranslation, getSolutionCategoryTranslation } from '@/lib/data'
+import { useCopy, useSolutions, useSolutionCategories, getLabel, useExtras } from '@/lib/content/site-context'
+import { getSolutionBySlug, getSolutionTranslation } from '@/lib/content/helpers'
 import Header from '../../components/Header'
 import SimpleFooter from '../../components/SimpleFooter'
 
@@ -14,8 +14,11 @@ export default function SolutionDetailPage() {
   const params = useParams()
   const searchParams = useSearchParams()
   const language = useAppStore((state) => state.language)
-  const t = translations[language]
-  const solution = getSolutionBySlug(params.slug as string)
+  const t = useCopy()
+  const extras = useExtras()
+  const solutions = useSolutions()
+  const solutionCategories = useSolutionCategories()
+  const solution = getSolutionBySlug(solutions, params.slug as string)
   const redirect = searchParams.get('redirect')
 
   if (!solution) {
@@ -67,7 +70,7 @@ export default function SolutionDetailPage() {
             <div className="flex items-center gap-4 mb-6">
               <span className="text-6xl">{solution.icon}</span>
               <div className="text-sm uppercase tracking-wider text-purple-light">
-                {getSolutionCategoryTranslation(solution.categoryId, language)}
+                {getLabel(solutionCategories, solution.categoryId, language)}
               </div>
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-purple-dark">
@@ -91,11 +94,11 @@ export default function SolutionDetailPage() {
                       solution.images!.length === 1 ? 'md:col-span-2' : ''
                     }`}
                   >
-                    <Image
+                    <MediaView
                       src={img}
                       alt={`${translation.title} - ${index + 1}`}
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-300"
+                      mode="player"
+                      className={isVideoSource(img) ? 'rounded-2xl' : 'hover:scale-105 transition-transform duration-300'}
                       sizes="(max-width: 768px) 100vw, 448px"
                     />
                   </div>
@@ -109,13 +112,7 @@ export default function SolutionDetailPage() {
               transition={{ duration: 0.4, delay: 0.15 }}
               className="aspect-video bg-purple-brand/5 rounded-2xl border border-purple-light/20 mb-12 overflow-hidden relative"
             >
-              <Image
-                src={solution.image}
-                alt={translation.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 896px"
-              />
+              <MediaView src={solution.image} alt={translation.title} mode="player" sizes="(max-width: 768px) 100vw, 896px" />
             </motion.div>
           ) : null}
 
@@ -200,7 +197,7 @@ export default function SolutionDetailPage() {
               className="mb-12"
             >
               <h2 className="text-xl font-bold mb-4 text-purple-dark">
-                {language === 'fr' ? 'En savoir plus' : 'Learn more'}
+                {extras.learnMore[language]}
               </h2>
               <div className="flex flex-wrap gap-3">
                 {solution.links.map((link, index) => (

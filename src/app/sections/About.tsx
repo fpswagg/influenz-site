@@ -2,12 +2,13 @@
 
 import { motion } from 'framer-motion'
 import { useAppStore } from '@/lib/store'
-import { translations } from '@/lib/i18n'
-import { env } from '@/lib/config/env'
+import { sectionIndexLabel, useCopy, useHomeSection, useSettings } from '@/lib/content/site-context'
 
 export default function About() {
   const language = useAppStore((state) => state.language)
-  const t = translations[language]
+  const t = useCopy()
+  const settings = useSettings()
+  const section = useHomeSection('about')
 
   return (
     <section id="about" className="min-h-screen py-32 px-6 lg:px-24 bg-purple-brand/5">
@@ -16,11 +17,11 @@ export default function About() {
         <div className="mb-20">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-sm font-medium text-purple-light uppercase tracking-wider">
-              04
+              {sectionIndexLabel(section?.sortOrder || 4)}
             </span>
             <div className="w-12 h-px bg-purple-brand" />
             <span className="text-sm font-medium text-purple-brand uppercase tracking-wider">
-              {language === 'fr' ? 'À propos' : 'About'}
+              {section?.eyebrow[language] || section?.label[language] || t.about.title}
             </span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-purple-dark">
@@ -123,38 +124,38 @@ export default function About() {
               </div>
             </div>
             <div className="mb-4 text-purple-brand/80">
-              <p className="font-medium mb-2">{env.contact.address}</p>
+              <p className="font-medium mb-2">{settings.address}</p>
               <div className="space-y-1 text-sm">
                 <a 
-                  href={`tel:${env.contact.phone.replace(/\s/g, '')}`}
+                  href={`tel:${settings.phone.replace(/\s/g, '')}`}
                   className="block hover:text-purple-dark transition-colors"
                 >
-                  📞 {env.contact.phone}
+                  📞 {settings.phone}
                 </a>
+                {settings.phoneSecondary ? (
                 <a 
-                  href={`tel:${env.contact.phoneSecondary.replace(/\s/g, '')}`}
+                  href={`tel:${settings.phoneSecondary.replace(/\s/g, '')}`}
                   className="block hover:text-purple-dark transition-colors"
                 >
-                  📞 {env.contact.phoneSecondary}
+                  📞 {settings.phoneSecondary}
                 </a>
+                ) : null}
                 <a 
-                  href={`mailto:${env.contact.email}`}
+                  href={`mailto:${settings.email}`}
                   className="block hover:text-purple-dark transition-colors"
                 >
-                  ✉️ {env.contact.email}
+                  ✉️ {settings.email}
                 </a>
               </div>
             </div>
             <p className="text-purple-brand/80 text-lg leading-relaxed">
-              {language === 'fr' 
-                ? 'Basé à Yaoundé, iNFLUENZ opère au Cameroun et à l\'échelle internationale. Notre équipe d\'experts en communication et stratégie vous accompagne dans tous vos projets.'
-                : 'Based in Yaoundé, iNFLUENZ operates in Cameroon and internationally. Our team of communication and strategy experts supports you in all your projects.'}
+              {settings.locationBlurb[language]}
             </p>
           </div>
           <div className="w-full h-full min-h-[300px] rounded-xl overflow-hidden border border-purple-light/20 shadow-inner">
             {/* Google Maps Embed pour Yaoundé */}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127331.57082244655!2d11.438201299999999!3d3.8480325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcf7a309ff7dd%3A0x50c4c7460ec157e!2sYaound%C3%A9%2C%20Cameroon!5e0!3m2!1sen!2s!4v1234567890"
+              src={settings.mapsEmbedUrl}
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: '300px' }}

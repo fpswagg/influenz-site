@@ -5,11 +5,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useAppStore } from '@/lib/store'
+import { useSettings } from '@/lib/content/site-context'
 import SideNav from './SideNav'
 
 export default function Header() {
   const pathname = usePathname()
   const { language, setLanguage } = useAppStore()
+  const settings = useSettings()
   const [isSideNavVisible, setIsSideNavVisible] = useState(false)
   const isHomePage = pathname === '/'
 
@@ -45,8 +47,8 @@ export default function Header() {
         {/* Logo Image */}
         <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
           <Image
-            src="/images/text-logo.png"
-            alt="iNFLUENZ"
+            src={settings.textLogoUrl}
+            alt={settings.siteName}
             width={120}
             height={32}
             className="h-8 w-auto"

@@ -142,13 +142,9 @@ export default function VideoPlayer({
         muted={muted}
         loop={loop}
         preload="metadata"
-        poster=""
         draggable={false}
         onDragStart={(e: React.DragEvent) => e.preventDefault()}
-      >
-        <source src={src} type={`video/${src.split('.').pop()?.toLowerCase() || 'mp4'}`} />
-        Your browser does not support the video tag.
-      </video>
+      />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Montserrat, Playfair_Display } from 'next/font/google'
 import '../styles/tailwind.css'
+import { getSiteBundle } from '@/lib/content/queries'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -19,33 +20,38 @@ const playfair = Playfair_Display({
   weight: ['400', '600', '700'],
 })
 
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://influenz.cm'),
-  title: 'iNFLUENZ',
-  description: 'Agence de conseil & stratégie, relations presse, communication digitale et événementiel',
-  icons: {
-    icon: '/images/logo.png',
-    apple: '/images/logo.png',
-  },
-  openGraph: {
-    title: 'iNFLUENZ',
-    description: 'Agence de conseil & stratégie, relations presse, communication digitale et événementiel',
-    images: [
-      {
-        url: '/images/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'iNFLUENZ',
+export async function generateMetadata(): Promise<Metadata> {
+  const fallbackTitle = 'iNFLUENZ'
+  const fallbackDescription = 'Agence de conseil & stratégie, relations presse, communication digitale et événementiel'
+  try {
+    const bundle = await getSiteBundle()
+    const title = bundle.settings.seoTitle.fr || fallbackTitle
+    const description = bundle.settings.seoDescription.fr || fallbackDescription
+    const image = bundle.settings.faviconUrl || '/images/logo.png'
+    return {
+      metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://influenz.cm'),
+      title,
+      description,
+      icons: { icon: image, apple: image },
+      openGraph: {
+        title,
+        description,
+        images: [{ url: image, width: 1200, height: 630, alt: bundle.settings.siteName }],
+        type: 'website',
       },
-    ],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'iNFLUENZ',
-    description: 'Agence de conseil & stratégie, relations presse, communication digitale et événementiel',
-    images: ['/images/logo.png'],
-  },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: [image],
+      },
+    }
+  } catch {
+    return {
+      title: fallbackTitle,
+      description: fallbackDescription,
+    }
+  }
 }
 
 export default function RootLayout({
@@ -61,4 +67,3 @@ export default function RootLayout({
     </html>
   )
 }
-

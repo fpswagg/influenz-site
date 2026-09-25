@@ -2,26 +2,18 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
-import { useAppStore } from '@/lib/store'
-import { translations } from '@/lib/i18n'
+import MediaView from '@/components/site/MediaView'
+import { useCopy, useSettings } from '@/lib/content/site-context'
 
 export default function Hero() {
-  const { language } = useAppStore()
-  const t = translations[language]
+  const t = useCopy()
+  const settings = useSettings()
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 w-full h-full">
-        <Image
-          src="/images/banner.jpg"
-          alt="iNFLUENZ - Communication & Strategy"
-          fill
-          className="object-cover object-center w-full h-full"
-          priority
-          sizes="100vw"
-        />
+        <MediaView src={settings.heroBannerUrl} alt={settings.siteName} mode="background" priority sizes="100vw" className="object-center" />
         {/* Overlay for better text readability - lighter to show more of the image */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/50 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/30" />

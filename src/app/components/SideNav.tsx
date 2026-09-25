@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useAppStore } from '@/lib/store'
-import { getNavSections } from '@/lib/config/sections'
+import { useNavSections } from '@/lib/content/site-context'
 
 interface SideNavProps {
   isVisible: boolean
@@ -11,7 +11,7 @@ interface SideNavProps {
 
 export default function SideNav({ isVisible }: SideNavProps) {
   const language = useAppStore((state) => state.language)
-  const sections = getNavSections(language)
+  const sections = useNavSections()
   const [activeSection, setActiveSection] = useState('hero')
 
   useEffect(() => {

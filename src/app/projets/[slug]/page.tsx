@@ -2,21 +2,24 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
+import MediaView from '@/components/site/MediaView'
 import { useParams, useSearchParams } from 'next/navigation'
 import { useAppStore } from '@/lib/store'
-import { translations } from '@/lib/i18n'
-import { getProjectBySlug, getProjectTranslation, getCategoryTranslation, getProjectServices, isVideoMedia } from '@/lib/data'
+import { useCopy, useProjects, useCategories, useServices, getLabel } from '@/lib/content/site-context'
+import { getProjectBySlug, getProjectTranslation } from '@/lib/content/helpers'
+import { isVideoMedia } from '@/lib/content/media'
 import Header from '../../components/Header'
 import SimpleFooter from '../../components/SimpleFooter'
-import VideoPlayer from '../../components/VideoPlayer'
 
 export default function ProjectDetailPage() {
   const params = useParams()
   const searchParams = useSearchParams()
   const language = useAppStore((state) => state.language)
-  const t = translations[language]
-  const project = getProjectBySlug(params.slug as string)
+  const t = useCopy()
+  const projects = useProjects()
+  const categories = useCategories()
+  const services = useServices()
+  const project = getProjectBySlug(projects, params.slug as string)
   const redirect = searchParams.get('redirect')
 
   if (!project) {
@@ -66,7 +69,7 @@ export default function ProjectDetailPage() {
             className="mb-16"
           >
             <div className="text-sm uppercase tracking-wider text-purple-light mb-4">
-              {getCategoryTranslation(project.categoryId, language)} • {project.year}
+              {getLabel(categories, project.categoryId, language)} • {project.year}
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-purple-dark">
               {translation.title}
@@ -103,14 +106,14 @@ export default function ProjectDetailPage() {
                     >
                       {isVideo ? (
                         <div className="absolute inset-0 select-none" style={{ userSelect: 'none', WebkitUserSelect: 'none' }}>
-                          <VideoPlayer src={mediaItem} className="rounded-2xl" />
+                          <MediaView src={mediaItem} alt={`${translation.title} - ${index + 1}`} mode="player" className="rounded-2xl" />
                         </div>
                       ) : (
-                        <Image
+                        <MediaView
                           src={mediaItem}
                           alt={`${translation.title} - ${index + 1}`}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          mode="player"
+                          className="group-hover:scale-105 transition-transform duration-300"
                           sizes="(max-width: 768px) 100vw, 448px"
                         />
                       )}
@@ -127,7 +130,7 @@ export default function ProjectDetailPage() {
               className="aspect-video bg-purple-brand/5 rounded-2xl border border-purple-light/20 flex items-center justify-center mb-16 shadow-sm"
             >
               <div className="text-8xl font-bold text-purple-brand/30">
-                {getCategoryTranslation(project.categoryId, language).charAt(0)}
+                {getLabel(categories, project.categoryId, language).charAt(0)}
               </div>
             </motion.div>
           )}
@@ -161,7 +164,7 @@ export default function ProjectDetailPage() {
               className="p-6 border border-purple-light/20 rounded-xl bg-white shadow-sm"
             >
               <div className="text-sm text-purple-light mb-2">{t.project.category}</div>
-              <div className="font-medium text-purple-dark">{getCategoryTranslation(project.categoryId, language)}</div>
+              <div className="font-medium text-purple-dark">{getLabel(categories, project.categoryId, language)}</div>
             </motion.div>
           </div>
 
@@ -200,12 +203,12 @@ export default function ProjectDetailPage() {
           >
             <h2 className="text-2xl font-bold mb-6 text-purple-dark">{t.project.services}</h2>
             <div className="flex flex-wrap gap-3">
-              {getProjectServices(project, language).map((service, index) => (
+              {project.serviceIds.map((serviceId) => (
                 <span
-                  key={index}
+                  key={serviceId}
                   className="px-4 py-2 bg-purple-brand/5 border border-purple-light/20 rounded-lg text-purple-brand/80"
                 >
-                  {service}
+                  {getLabel(services, serviceId, language)}
                 </span>
               ))}
             </div>
@@ -248,7 +251,7 @@ export default function ProjectDetailPage() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
-                <span className="font-medium">{project.link.label}</span>
+                <span className="font-medium">{project.link.labels[language]}</span>
               </a>
             </motion.div>
           )}

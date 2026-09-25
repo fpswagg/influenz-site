@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: influenz
+      POSTGRES_PASSWORD: influenz
+      POSTGRES_DB: influenz
+    ports:
+      - "5433:5432"
+    volumes:
+      - influenz_pg:/var/lib/postgresql/data
+
+volumes:
+  influenz_pg:

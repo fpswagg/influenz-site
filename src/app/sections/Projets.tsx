@@ -3,12 +3,16 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useAppStore } from '@/lib/store'
-import { translations } from '@/lib/i18n'
-import { projectsData, getProjectTranslation, getCategoryTranslation } from '@/lib/data'
+import { sectionIndexLabel, useCopy, useProjects, useCategories, getLabel, useExtras, useHomeSection } from '@/lib/content/site-context'
+import { getProjectTranslation } from '@/lib/content/helpers'
 
 export default function Projets() {
   const language = useAppStore((state) => state.language)
-  const t = translations[language]
+  const t = useCopy()
+  const projectsData = useProjects()
+  const categories = useCategories()
+  const extras = useExtras()
+  const section = useHomeSection('projects')
 
   return (
     <section id="projects" className="min-h-screen py-32 px-6 lg:px-24 bg-white">
@@ -17,11 +21,11 @@ export default function Projets() {
         <div className="mb-20">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-sm font-medium text-purple-light uppercase tracking-wider">
-              02
+              {sectionIndexLabel(section?.sortOrder || 2)}
             </span>
             <div className="w-12 h-px bg-purple-brand" />
             <span className="text-sm font-medium text-purple-brand uppercase tracking-wider">
-              {language === 'fr' ? 'Portfolio' : 'Portfolio'}
+                {section?.eyebrow[language] || 'Portfolio'}
             </span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-purple-dark">
@@ -57,7 +61,7 @@ export default function Projets() {
                   <div className="lg:col-span-7 space-y-4">
                     <div>
                       <span className="text-xs font-medium text-purple-light uppercase tracking-wider">
-                        {getCategoryTranslation(project.categoryId, language)}
+                        {getLabel(categories, project.categoryId, language)}
                       </span>
                     </div>
                     <h3 className="text-2xl lg:text-3xl font-bold text-purple-dark group-hover:text-purple-brand transition-colors">
@@ -99,7 +103,7 @@ export default function Projets() {
             className="inline-flex items-center gap-2 px-6 py-3 border border-purple-light/30 rounded-lg hover:border-purple-brand text-purple-brand hover:bg-purple-brand hover:text-white transition-colors shadow-sm"
           >
             <span className="font-medium">
-              {language === 'fr' ? 'Voir tous les projets' : 'View all projects'}
+              {extras.viewAllProjects[language]}
             </span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

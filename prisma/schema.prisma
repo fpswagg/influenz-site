@@ -1,0 +1,278 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Locale {
+  fr
+  en
+}
+
+enum CopyFieldKind {
+  TEXT
+  TEXTAREA
+  LIST
+}
+
+enum MediaKind {
+  IMAGE
+  VIDEO
+  FILE
+}
+
+model SiteConfig {
+  id               String   @id @default("site")
+  siteName         String
+  logoUrl          String?
+  textLogoUrl      String?
+  faviconUrl       String?
+  heroBannerUrl    String?
+  seoTitleFr       String
+  seoTitleEn       String
+  seoDescriptionFr String   @db.Text
+  seoDescriptionEn String   @db.Text
+  email            String
+  phone            String
+  phoneSecondary   String?
+  address          String
+  postalBox        String?
+  legalForm        String?
+  niu              String?
+  rccm             String?
+  linkedinUrl      String?
+  twitterUrl       String?
+  instagramUrl     String?
+  mapsEmbedUrl     String?  @db.Text
+  contactIntroFr   String?  @db.Text
+  contactIntroEn   String?  @db.Text
+  locationBlurbFr  String?  @db.Text
+  locationBlurbEn  String?  @db.Text
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model CopyEntry {
+  id        String        @id @default(cuid())
+  key       String        @unique
+  group     String
+  kind      CopyFieldKind @default(TEXT)
+  label     String
+  hint      String?
+  valueFr   String        @db.Text
+  valueEn   String        @db.Text
+  sortOrder Int           @default(0)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([group, sortOrder])
+}
+
+model HomeSection {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  component String
+  enabled   Boolean  @default(true)
+  showInNav Boolean  @default(true)
+  sortOrder Int
+  labelFr   String
+  labelEn   String
+  eyebrowFr String?
+  eyebrowEn String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProjectCategory {
+  id        String    @id @default(cuid())
+  slug      String    @unique
+  labelFr   String
+  labelEn   String
+  isAll     Boolean   @default(false)
+  sortOrder Int       @default(0)
+  projects  Project[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model ProjectService {
+  id        String                    @id @default(cuid())
+  slug      String                    @unique
+  labelFr   String
+  labelEn   String
+  sortOrder Int                       @default(0)
+  projects  ProjectServiceOnProject[]
+  createdAt DateTime                  @default(now())
+  updatedAt DateTime                  @updatedAt
+}
+
+model Project {
+  id          String                    @id @default(cuid())
+  slug        String                    @unique
+  year        String
+  clientName  String
+  categoryId  String
+  category    ProjectCategory           @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  linkUrl     String?
+  linkLabelFr String?
+  linkLabelEn String?
+  published   Boolean                   @default(true)
+  featured    Boolean                   @default(true)
+  sortOrder   Int                       @default(0)
+  translations ProjectTranslation[]
+  media       ProjectMedia[]
+  services    ProjectServiceOnProject[]
+  createdAt   DateTime                  @default(now())
+  updatedAt   DateTime                  @updatedAt
+
+  @@index([categoryId])
+  @@index([published, featured, sortOrder])
+}
+
+model ProjectTranslation {
+  id              String   @id @default(cuid())
+  projectId       String
+  project         Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  locale          Locale
+  title           String
+  description     String   @db.Text
+  longDescription String   @db.Text
+  challenge       String   @db.Text
+  solution        String   @db.Text
+  client          String
+  results         String[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([projectId, locale])
+}
+
+model ProjectMedia {
+  id        String    @id @default(cuid())
+  projectId String
+  project   Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  url       String
+  kind      MediaKind @default(IMAGE)
+  altFr     String?
+  altEn     String?
+  sortOrder Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([projectId, sortOrder])
+}
+
+model ProjectServiceOnProject {
+  projectId String
+  serviceId String
+  project   Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  service   ProjectService @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  sortOrder Int            @default(0)
+
+  @@id([projectId, serviceId])
+}
+
+model SolutionCategory {
+  id        String     @id @default(cuid())
+  slug      String     @unique
+  labelFr   String
+  labelEn   String
+  isAll     Boolean    @default(false)
+  sortOrder Int        @default(0)
+  solutions Solution[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Solution {
+  id           String                 @id @default(cuid())
+  slug         String                 @unique
+  categoryId   String
+  category     SolutionCategory       @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  icon         String                 @default("")
+  featured     Boolean                @default(false)
+  coverUrl     String?
+  published    Boolean                @default(true)
+  sortOrder    Int                    @default(0)
+  translations SolutionTranslation[]
+  media        SolutionMedia[]
+  links        SolutionLink[]
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+
+  @@index([categoryId])
+  @@index([published, featured, sortOrder])
+}
+
+model SolutionTranslation {
+  id           String   @id @default(cuid())
+  solutionId   String
+  solution     Solution @relation(fields: [solutionId], references: [id], onDelete: Cascade)
+  locale       Locale
+  title        String
+  problem      String   @db.Text
+  approach     String   @db.Text
+  callToAction String
+  steps        String[]
+  results      String[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([solutionId, locale])
+}
+
+model SolutionMedia {
+  id         String    @id @default(cuid())
+  solutionId String
+  solution   Solution  @relation(fields: [solutionId], references: [id], onDelete: Cascade)
+  url        String
+  kind       MediaKind @default(IMAGE)
+  altFr      String?
+  altEn      String?
+  sortOrder  Int       @default(0)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@index([solutionId, sortOrder])
+}
+
+model SolutionLink {
+  id         String   @id @default(cuid())
+  solutionId String
+  solution   Solution @relation(fields: [solutionId], references: [id], onDelete: Cascade)
+  url        String
+  labelFr    String
+  labelEn    String
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([solutionId, sortOrder])
+}
+
+model Client {
+  id            String   @id @default(cuid())
+  name          String
+  logoLetters   String
+  imageUrl      String?
+  descriptionFr String   @db.Text
+  descriptionEn String   @db.Text
+  sortOrder     Int      @default(0)
+  published     Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model AboutService {
+  id            String   @id @default(cuid())
+  titleFr       String
+  titleEn       String
+  descriptionFr String   @db.Text
+  descriptionEn String   @db.Text
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

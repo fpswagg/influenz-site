@@ -2,18 +2,20 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
+import MediaView from '@/components/site/MediaView'
 import { useState } from 'react'
 import { useAppStore } from '@/lib/store'
-import { translations } from '@/lib/i18n'
-import { projectsData, getProjectTranslation, categoriesData, getProjectCategory, getCategoryTranslation, getProjectServices, isVideoMedia } from '@/lib/data'
+import { useCopy, useProjects, useCategories, useServices, getLabel } from '@/lib/content/site-context'
+import { getProjectTranslation, getProjectCategory } from '@/lib/content/helpers'
 import Header from '../components/Header'
 import SimpleFooter from '../components/SimpleFooter'
-import VideoPlayer from '../components/VideoPlayer'
 
 export default function ProjetsPage() {
   const language = useAppStore((state) => state.language)
-  const t = translations[language]
+  const t = useCopy()
+  const projectsData = useProjects()
+  const categoriesData = useCategories()
+  const services = useServices()
   const [activeFilter, setActiveFilter] = useState('all')
 
   // Filter projects based on active filter
@@ -104,24 +106,16 @@ export default function ProjetsPage() {
                         onDragStart={(e: React.DragEvent) => e.preventDefault()}
                       >
                         {project.media && project.media[0] ? (
-                          isVideoMedia(project.media[0]) ? (
-                            <VideoPlayer 
-                              src={project.media[0]} 
-                              className="w-full h-full rounded-t-2xl" 
-                              muted={true}
-                            />
-                          ) : (
-                            <Image
-                              src={project.media[0]}
-                              alt={translation.title}
-                              fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-2xl"
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                            />
-                          )
+                          <MediaView
+                            src={project.media[0]}
+                            alt={translation.title}
+                            mode="cover"
+                            className="group-hover:scale-105 transition-transform duration-300 rounded-t-2xl"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
                         ) : (
                           <div className="text-6xl font-bold text-purple-brand/30">
-                            {getCategoryTranslation(project.categoryId, language).charAt(0)}
+                            {getLabel(categoriesData, project.categoryId, language).charAt(0)}
                           </div>
                         )}
                       </div>
@@ -129,7 +123,7 @@ export default function ProjetsPage() {
                       {/* Content */}
                       <div className="p-6">
                         <div className="text-xs uppercase tracking-wider text-purple-light mb-3">
-                          {getCategoryTranslation(project.categoryId, language)} • {project.year}
+                          {getLabel(categoriesData, project.categoryId, language)} • {project.year}
                         </div>
                         
                         <h2 className="text-2xl font-bold mb-3 text-purple-dark group-hover:text-purple-brand transition-colors">
@@ -142,14 +136,14 @@ export default function ProjetsPage() {
                         
                         {/* Tags */}
                         <div className="flex flex-wrap gap-2 mb-4">
-                          {getProjectServices(project, language).slice(0, 3).map((service, idx) => (
-                            <span
-                              key={idx}
-                              className="px-3 py-1 bg-purple-brand/5 border border-purple-light/20 rounded-full text-xs text-purple-brand/70"
-                            >
-                              {service}
-                            </span>
-                          ))}
+                          {project.serviceIds.slice(0, 3).map((serviceId) => (
+                              <span
+                                key={serviceId}
+                                className="px-3 py-1 bg-purple-brand/5 border border-purple-light/20 rounded-full text-xs text-purple-brand/70"
+                              >
+                                {getLabel(services, serviceId, language)}
+                              </span>
+                            ))}
                         </div>
                         
                         {/* CTA */}
