@@ -4,7 +4,8 @@ import { DashboardForm } from '@/components/dashboard/form/DashboardForm'
 import { TextsEditor, type TextEntry } from '@/components/dashboard/TextsEditor'
 import { HIDDEN_TEXT_KEYS, TEXT_GROUPS, shortTextLabel } from '@/lib/dashboard/text-groups'
 
-export default async function TextsPage({ searchParams }: { searchParams?: { group?: string } }) {
+export default async function TextsPage(props: { searchParams?: Promise<{ group?: string }> }) {
+  const searchParams = await props.searchParams;
   const rows = await prisma.copyEntry.findMany({ orderBy: [{ group: 'asc' }, { sortOrder: 'asc' }] })
 
   const known = new Set(TEXT_GROUPS.map((group) => group.id))

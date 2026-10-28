@@ -177,7 +177,8 @@ function rangeStart(range: string | null) {
   return match[1] === '' ? Number.POSITIVE_INFINITY : Number(match[1])
 }
 
-export async function GET(request: Request, { params }: { params: { key: string[] } }) {
+export async function GET(request: Request, props: { params: Promise<{ key: string[] }> }) {
+  const params = await props.params;
   const key = params.key.map((part) => decodeURIComponent(part)).join('/')
   if (!key || key.includes('..')) return new Response('Not found', { status: 404 })
   // Only this site's own files can be relayed

@@ -11,13 +11,14 @@ import { Switch } from '@/components/dashboard/ui/Switch'
 import { Field, Panel, Select, StatusBadge } from '@/components/dashboard/ui/primitives'
 import { IconImage, IconLightbulb, IconLink, IconSparkles } from '@/components/dashboard/ui/icons'
 
-export default async function SolutionEditorPage({
-  params,
-  searchParams,
-}: {
-  params: { id: string }
-  searchParams?: { created?: string }
-}) {
+export default async function SolutionEditorPage(
+  props: {
+    params: Promise<{ id: string }>
+    searchParams?: Promise<{ created?: string }>
+  }
+) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const isNew = params.id === 'new'
   const [solution, categories] = await Promise.all([
     isNew

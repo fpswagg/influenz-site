@@ -9,13 +9,14 @@ import { Switch } from '@/components/dashboard/ui/Switch'
 import { Field, Panel, Select, StatusBadge, TextInput } from '@/components/dashboard/ui/primitives'
 import { IconBriefcase, IconImage, IconLink, IconSparkles } from '@/components/dashboard/ui/icons'
 
-export default async function ProjectEditorPage({
-  params,
-  searchParams,
-}: {
-  params: { id: string }
-  searchParams?: { created?: string }
-}) {
+export default async function ProjectEditorPage(
+  props: {
+    params: Promise<{ id: string }>
+    searchParams?: Promise<{ created?: string }>
+  }
+) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const isNew = params.id === 'new'
   const [project, categories, services] = await Promise.all([
     isNew

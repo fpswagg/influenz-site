@@ -9,13 +9,14 @@ import { Switch } from '@/components/dashboard/ui/Switch'
 import { Field, Panel, StatusBadge, TextInput } from '@/components/dashboard/ui/primitives'
 import { IconHandshake } from '@/components/dashboard/ui/icons'
 
-export default async function ClientEditorPage({
-  params,
-  searchParams,
-}: {
-  params: { id: string }
-  searchParams?: { created?: string }
-}) {
+export default async function ClientEditorPage(
+  props: {
+    params: Promise<{ id: string }>
+    searchParams?: Promise<{ created?: string }>
+  }
+) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const isNew = params.id === 'new'
   const client = isNew ? null : await prisma.client.findUnique({ where: { id: params.id } })
   if (!isNew && !client) notFound()
